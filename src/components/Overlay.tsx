@@ -13,7 +13,7 @@ export default function Overlay() {
         >
           <Icon name="Truck" size={28} />
           <span className="font-sans text-2xl md:text-3xl font-light tracking-wide">
-            АКСАКАЛ
+            ГрузМастер
           </span>
         </motion.div>
         <motion.p
@@ -22,7 +22,7 @@ export default function Overlay() {
           transition={{ duration: 1.2, delay: 0.8 }}
           className="mt-3 text-sm md:text-base text-white/70 font-light max-w-md"
         >
-          Знает своё дело — грузоперевозки, переезды и доставка по Уфе и Башкортостану
+          Профессионалы дела — грузоперевозки, переезды и доставка по Уфе и Башкортостану
         </motion.p>
       </div>
 
