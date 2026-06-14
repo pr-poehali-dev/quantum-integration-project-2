@@ -29,7 +29,7 @@ export default function LoadingScreen() {
           transition={{ duration: 0.8 }}
           className="font-serif text-4xl mb-4 text-white"
         >
-          ГрузУфа
+          АКСАКАЛ
         </motion.div>
         <motion.div
           initial={{ scaleX: 0 }}
