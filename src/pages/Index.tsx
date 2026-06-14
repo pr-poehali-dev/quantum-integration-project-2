@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
-const heroImage = "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/c4fe1b47-139e-4a30-bff3-0672dd289c89.jpg"
+const heroImage = "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/83234ac8-951d-43b2-aa7e-af8620ba6ec7.jpg"
 
 const services = [
   { icon: "Home", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте" },
