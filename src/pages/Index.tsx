@@ -95,10 +95,9 @@ export default function Index() {
               href="https://wa.me/79177775020"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
             >
-              <Icon name="MessageCircle" size={20} />
-              WhatsApp
+              <Icon name="MessageCircle" size={24} />
             </a>
           </motion.div>
         </div>
@@ -188,10 +187,9 @@ export default function Index() {
               href="https://wa.me/79177775020"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white p-4 rounded-full transition-all hover:scale-105"
             >
-              <Icon name="MessageCircle" size={20} />
-              WhatsApp
+              <Icon name="MessageCircle" size={24} />
             </a>
           </div>
         </motion.div>
