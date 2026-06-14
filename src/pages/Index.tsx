@@ -103,6 +103,22 @@ export default function Index() {
             >
               <Icon name="MessageCircle" size={24} />
             </a>
+            <a
+              href="https://t.me/+79177775020"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-400 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-sky-500/30"
+            >
+              <Icon name="Send" size={24} />
+            </a>
+            <a
+              href="https://max.ru/u/79177775020"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-violet-600 hover:bg-violet-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-violet-500/30"
+            >
+              <Icon name="MessageSquare" size={24} />
+            </a>
           </motion.div>
         </div>
 
