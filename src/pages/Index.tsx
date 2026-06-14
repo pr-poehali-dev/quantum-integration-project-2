@@ -5,7 +5,7 @@ import { useToast } from "@/hooks/use-toast"
 
 const REQUESTS_URL = "https://functions.poehali.dev/4e286ec5-b1c9-4760-bd3d-7b601766e226"
 
-const heroImage = "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/832f0d4d-737b-4e36-83c7-f2eaf8ef0100.jpg"
+const heroImage = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/845675ce00bd3d4fc0ec773ff6b8da23/1200x900"
 
 const services = [
   { icon: "Home", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте" },
