@@ -53,18 +53,24 @@
     box-sizing: border-box;
   }
 
-  html, body, #root {
-    height: 100%;
+  html,
+  body,
+  #root {
     width: 100%;
-    overflow: hidden;
+    min-height: 100%;
   }
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: "Montserrat", system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'PT Serif', Georgia, serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "PT Serif", Georgia, serif;
   }
 }
