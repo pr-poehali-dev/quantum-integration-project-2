@@ -2,54 +2,6 @@ import { useRef, useState, useEffect } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
 
-const baseImages = [
-  "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
-  "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
-  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
-  "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80",
-  "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
-  "https://images.unsplash.com/photo-1485575301924-6891ef935dcd?w=800&q=80",
-]
-
-const images = Array.from({ length: 16 }, (_, i) => baseImages[i % baseImages.length])
-
-function useManualTextures(urls: string[]) {
-  const [textures, setTextures] = useState<THREE.Texture[]>([])
-
-  useEffect(() => {
-    const loader = new THREE.TextureLoader()
-    loader.crossOrigin = "anonymous"
-    const loaded: THREE.Texture[] = []
-    let completed = 0
-
-    urls.forEach((url, i) => {
-      loader.load(
-        url,
-        (tex) => {
-          loaded[i] = tex
-          completed++
-          if (completed === urls.length) {
-            setTextures([...loaded])
-          }
-        },
-        undefined,
-        () => {
-          const fallback = new THREE.Texture()
-          loaded[i] = fallback
-          completed++
-          if (completed === urls.length) {
-            setTextures([...loaded])
-          }
-        }
-      )
-    })
-  }, [])
-
-  return textures
-}
-
 const imagePositions = [
   { pos: [-3.2, 1.8, -2.5] as [number, number, number], rot: [0, 0.4, 0] as [number, number, number], scale: 0.7 },
   { pos: [2.8, -1.2, -3] as [number, number, number], rot: [0, -0.5, 0] as [number, number, number], scale: 0.8 },
@@ -104,7 +56,11 @@ function FloatingImage({ texture, index, rotation }: FloatingImageProps) {
   )
 }
 
-export default function Scene() {
+interface SceneProps {
+  textures: THREE.Texture[]
+}
+
+export default function Scene({ textures }: SceneProps) {
   const [rotation, setRotation] = useState(0)
   const [targetRotation, setTargetRotation] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
@@ -114,8 +70,6 @@ export default function Scene() {
   const isDragging = useRef(false)
   const dragStart = useRef({ x: 0, y: 0 })
   const dragRotation = useRef(0)
-
-  const textures = useManualTextures(images)
 
   // Mouse parallax effect
   useEffect(() => {
@@ -277,7 +231,7 @@ export default function Scene() {
       <pointLight position={[-10, -10, -5]} intensity={0.4} color="#ff6b35" />
       <spotLight position={[0, 5, 5]} intensity={0.3} angle={0.6} penumbra={1} />
 
-      {textures.length > 0 && textures.map((texture, index) => (
+      {textures.map((texture, index) => (
         <FloatingImage key={index} texture={texture} index={index} rotation={rotation} />
       ))}
 
