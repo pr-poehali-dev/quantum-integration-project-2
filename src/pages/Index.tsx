@@ -30,8 +30,8 @@ const guarantees = [
 ]
 
 const TARIFFS: Record<string, number> = {
-  "Газель (до 1,5 т)": 800,
-  "Газель (до 2,5 т)": 1000,
+  "Газель (до 1,5 т)": 1400,
+  "Газель (до 2,5 т)": 1800,
 }
 
 const fadeUp = {
@@ -55,7 +55,7 @@ export default function Index() {
   const [carType, setCarType] = useState("Газель (до 1,5 т)")
   const [hours, setHours] = useState(2)
   const [movers, setMovers] = useState(0)
-  const moverRate = 500
+  const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
 
   const submit = async (e: React.FormEvent) => {
@@ -274,8 +274,8 @@ export default function Index() {
               {Object.keys(TARIFFS).map((t) => <option key={t}>{t}</option>)}
             </select>
 
-            <label className="block text-sm text-gray-400 mb-2">Время работы: {hours} ч</label>
-            <input type="range" min={1} max={10} value={hours} onChange={(e) => setHours(+e.target.value)}
+            <label className="block text-sm text-gray-400 mb-2">Время работы: {hours} ч <span className="text-gray-500">(минимум 2 ч)</span></label>
+            <input type="range" min={2} max={10} value={hours} onChange={(e) => setHours(+e.target.value)}
               className="w-full mb-5 accent-orange-500" />
 
             <label className="block text-sm text-gray-400 mb-2">Грузчиков: {movers}</label>
