@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react"
+import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 import { useToast } from "@/hooks/use-toast"
@@ -337,6 +338,10 @@ export default function Index() {
                 className="w-full bg-gray-950 hover:bg-gray-800 text-white font-semibold py-3.5 rounded-xl transition-all hover:scale-[1.02] disabled:opacity-60">
                 {sending ? "Отправляем..." : "Отправить заявку"}
               </button>
+              <p className="text-xs text-white/70 text-center leading-relaxed">
+                Нажимая кнопку «Отправить заявку», Вы даёте согласие на обработку персональных данных согласно{" "}
+                <Link to="/privacy" className="underline hover:text-white">Политике конфиденциальности</Link>. ФЗ от 27.07.2006 №152-ФЗ
+              </p>
             </form>
           </motion.div>
         </div>
@@ -349,6 +354,7 @@ export default function Index() {
           <span className="text-white font-semibold">ГрузМастер</span>
         </div>
         <p>Уфа и вся Россия · <a href="tel:+79177775020" className="text-orange-500 hover:underline">+7 917 777-50-20</a></p>
+        <p className="mt-2"><Link to="/privacy" className="hover:text-orange-500 hover:underline">Политика конфиденциальности</Link></p>
       </footer>
 
       {/* FLOATING CALL BUTTON — перемещается наверх на калькуляторе */}
