@@ -191,9 +191,6 @@ export default function Index() {
               Рассчитать стоимость
             </a>
             <div className="flex justify-center gap-4">
-              <a href="tel:+79177775020" className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-full transition-all hover:scale-105">
-                <Icon name="Phone" size={24} />
-              </a>
               <a href="https://wa.me/79177775020" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white p-4 rounded-full transition-all hover:scale-105">
                 <Icon name="MessageCircle" size={24} />
               </a>
