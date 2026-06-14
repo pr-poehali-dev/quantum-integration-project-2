@@ -350,10 +350,13 @@ export default function Index() {
       {/* FOOTER */}
       <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-          <div className="flex items-center gap-2">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
             <Icon name="Truck" size={24} className="text-orange-500" />
             <span className="text-white font-semibold text-lg">ГрузМастер</span>
-          </div>
+          </button>
           <p className="text-orange-500 mb-6">Профессионалы дела</p>
 
           <div className="space-y-2">
