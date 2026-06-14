@@ -34,7 +34,7 @@ const guarantees = [
 
 const TARIFFS: Record<string, number> = {
   "Газель (до 1,5 т)": 1400,
-  "Газель (до 2,5 т)": 1800,
+  "Газель усиленная (до 2,5 т)": 1800,
 }
 
 const fadeUp = {
