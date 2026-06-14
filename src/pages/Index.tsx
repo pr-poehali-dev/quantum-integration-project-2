@@ -20,7 +20,7 @@ const services = [
 const advantages = [
   { icon: "Clock", value: "60 мин", label: "Подача автомобиля" },
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
-  { icon: "ThumbsUp", value: "12 лет", label: "Избавляем вас от хлопот" },
+  { icon: "ThumbsUp", value: "12 лет", label: "На рынке" },
   { icon: "Star", value: "6000+", label: "Выполненных заказов" },
 ]
 
