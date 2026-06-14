@@ -86,39 +86,41 @@ export default function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
               href="tel:+79177775020"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30"
             >
               <Icon name="Phone" size={20} />
               +7 917 777-50-20
             </a>
-            <a
-              href="https://wa.me/79177775020"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
-            >
-              <Icon name="MessageCircle" size={24} />
-            </a>
-            <a
-              href="https://t.me/+79177775020"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-400 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-sky-500/30"
-            >
-              <Icon name="Send" size={24} />
-            </a>
-            <a
-              href="https://max.ru/u/79177775020"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-violet-600 hover:bg-violet-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-violet-500/30"
-            >
-              <Icon name="MessageSquare" size={24} />
-            </a>
+            <div className="flex justify-center gap-4">
+              <a
+                href="https://wa.me/79177775020"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-green-500/30"
+              >
+                <Icon name="MessageCircle" size={24} />
+              </a>
+              <a
+                href="https://t.me/+79177775020"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-sky-500 hover:bg-sky-400 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-sky-500/30"
+              >
+                <Icon name="Send" size={24} />
+              </a>
+              <a
+                href="https://max.ru/u/79177775020"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-violet-600 hover:bg-violet-500 text-white p-4 rounded-full text-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-violet-500/30"
+              >
+                <Icon name="MessageSquare" size={24} />
+              </a>
+            </div>
           </motion.div>
         </div>
 
