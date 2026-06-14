@@ -37,13 +37,24 @@ export default function Overlay() {
           <span className="flex items-center gap-2"><Icon name="ShieldCheck" size={16} /> Аккуратные грузчики</span>
           <span className="flex items-center gap-2"><Icon name="Wallet" size={16} /> Честные цены</span>
         </div>
-        <a
-          href="tel:+79177775020"
-          className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-105"
-        >
-          <Icon name="Phone" size={18} />
-          Заказать машину
-        </a>
+        <div className="flex flex-wrap justify-center gap-3">
+          <a
+            href="tel:+79177775020"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-105"
+          >
+            <Icon name="Phone" size={18} />
+            Позвонить
+          </a>
+          <a
+            href="https://wa.me/79177775020"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-green-500 px-7 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+          >
+            <Icon name="MessageCircle" size={18} />
+            WhatsApp
+          </a>
+        </div>
       </motion.div>
     </div>
   )
