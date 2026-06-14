@@ -366,12 +366,12 @@ export default function Index() {
           <div className="space-y-2">
             <h4 className="text-white font-semibold mb-3">Контакты</h4>
             <p className="flex items-center gap-2">
-              <Icon name="Phone" size={16} className="text-orange-500" />
-              <a href="tel:+79177775020" className="hover:text-orange-500">+7 917 777-50-20</a>
-            </p>
-            <p className="flex items-center gap-2">
               <Icon name="MapPin" size={16} className="text-orange-500" />
               <span>г. Уфа, Республика Башкортостан</span>
+            </p>
+            <p className="flex items-center gap-2">
+              <Icon name="Mail" size={16} className="text-orange-500" />
+              <a href="mailto:support@gruzufa.ru" className="hover:text-orange-500">support@gruzufa.ru</a>
             </p>
             <p className="flex items-center gap-2">
               <Icon name="Clock" size={16} className="text-orange-500" />
@@ -401,7 +401,8 @@ export default function Index() {
         </div>
 
         <div className="max-w-6xl mx-auto border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
-          © {new Date().getFullYear()} ГрузМастер · Уфа и вся Россия
+          © 2014–2026 ГрузМастер · Профессионалы дела. Все права защищены |{" "}
+          <Link to="/privacy" className="hover:text-orange-500 hover:underline">Политика конфиденциальности</Link>
         </div>
       </footer>
 
