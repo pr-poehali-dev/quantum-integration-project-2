@@ -349,23 +349,35 @@ export default function Index() {
 
       {/* FOOTER */}
       <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
-        <div className="max-w-6xl mx-auto space-y-2 text-center">
-          <p className="flex items-center justify-center gap-2">
-            <Icon name="MapPin" size={16} className="text-orange-500" />
-            <span>г. Уфа, Республика Башкортостан</span>
-          </p>
-          <p className="flex items-center justify-center gap-2">
-            <Icon name="Mail" size={16} className="text-orange-500" />
-            <a href="mailto:support@gruzufa.ru" className="hover:text-orange-500">support@gruzufa.ru</a>
-          </p>
-          <p className="flex items-center justify-center gap-2">
-            <Icon name="Clock" size={16} className="text-orange-500" />
-            <span>Ежедневно, круглосуточно</span>
-          </p>
+        <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
+          <div className="flex items-center gap-2">
+            <Icon name="Truck" size={24} className="text-orange-500" />
+            <span className="text-white font-semibold text-lg">ГрузМастер</span>
+          </div>
+          <p className="text-orange-500 mb-6">Профессионалы дела</p>
+
+          <div className="space-y-2">
+            <p className="flex items-center justify-center gap-2">
+              <Icon name="MapPin" size={16} className="text-orange-500" />
+              <span>г. Уфа, Республика Башкортостан</span>
+            </p>
+            <p className="flex items-center justify-center gap-2">
+              <Icon name="Phone" size={16} className="text-orange-500" />
+              <a href="tel:+79177775020" className="hover:text-orange-500">+7 917 777-50-20</a>
+            </p>
+            <p className="flex items-center justify-center gap-2">
+              <Icon name="Mail" size={16} className="text-orange-500" />
+              <a href="mailto:support@gruzufa.ru" className="hover:text-orange-500">support@gruzufa.ru</a>
+            </p>
+            <p className="flex items-center justify-center gap-2">
+              <Icon name="Clock" size={16} className="text-orange-500" />
+              <span>Ежедневно, круглосуточно</span>
+            </p>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
-          © 2014–2026 ГрузМастер · Профессионалы дела. Все права защищены |{" "}
+          © 2014–2026 ГрузМастер · Все права защищены |{" "}
           <Link to="/privacy" className="hover:text-orange-500 hover:underline">Политика конфиденциальности</Link>
         </div>
       </footer>
