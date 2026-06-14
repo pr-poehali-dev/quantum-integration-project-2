@@ -15,6 +15,7 @@ const services = [
   { icon: "Users", title: "Грузчики", desc: "Профессиональные грузчики — аккуратно и быстро" },
   { icon: "Hammer", title: "Разнорабочие", desc: "Сборка мебели, демонтаж, подсобные работы" },
   { icon: "Truck", title: "Грузоперевозки", desc: "Газели и грузовики до 2,5 тонн по городу и России" },
+  { icon: "Trash2", title: "Вывоз строительного мусора", desc: "Вывезем строительный мусор и хлам с погрузкой и утилизацией" },
 ]
 
 const advantages = [
@@ -331,6 +332,7 @@ export default function Index() {
                 <option>Грузчики</option>
                 <option>Разнорабочие</option>
                 <option>Грузоперевозка по России</option>
+                <option>Вывоз строительного мусора</option>
               </select>
               <textarea value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Что перевезти, откуда и куда" rows={3}
                 className="w-full bg-white/95 text-gray-900 rounded-xl px-4 py-3 outline-none placeholder:text-gray-500 resize-none" />

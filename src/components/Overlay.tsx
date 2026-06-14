@@ -22,7 +22,7 @@ export default function Overlay() {
           transition={{ duration: 1.2, delay: 0.8 }}
           className="mt-3 text-sm md:text-base text-white/70 font-light max-w-md"
         >
-          Переезды · Доставка · Грузчики · Разнорабочие · Грузоперевозки по Уфе и всей России
+          Переезды · Доставка · Грузчики · Разнорабочие · Вывоз мусора · Грузоперевозки по Уфе и всей России
         </motion.p>
 
         <motion.div
