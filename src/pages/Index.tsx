@@ -349,7 +349,7 @@ export default function Index() {
 
       {/* FLOATING CALL BUTTON — перемещается наверх на калькуляторе */}
       <a href="tel:+79177775020"
-        className={`fixed left-4 right-4 md:left-auto md:right-6 md:w-auto z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg shadow-orange-500/40 transition-all duration-500 ${callTop ? "top-4" : "bottom-4 md:bottom-6"}`}>
+        className={`fixed left-4 right-4 md:left-auto md:right-6 md:w-auto z-50 flex items-center justify-center gap-2 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg transition-all duration-500 ${callTop ? "top-4 bg-black/40 backdrop-blur-md border border-white/20 shadow-black/30" : "bottom-4 md:bottom-6 bg-orange-500 hover:bg-orange-400 shadow-orange-500/40"}`}>
         <Icon name="Phone" size={20} />
         Позвонить +7 917 777-50-20
       </a>
