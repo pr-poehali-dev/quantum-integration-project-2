@@ -261,11 +261,13 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {guarantees.map((g, i) => (
               <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="bg-gray-950 border border-gray-800 rounded-2xl p-8 text-center">
-                <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                  <Icon name={g.icon} size={28} className="text-orange-500" />
+                className="bg-gray-950 border border-gray-800 rounded-2xl p-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                    <Icon name={g.icon} size={20} className="text-orange-500" />
+                  </div>
+                  <h3 className="text-lg font-semibold">{g.title}</h3>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{g.title}</h3>
                 <p className="text-gray-400 text-sm">{g.desc}</p>
               </motion.div>
             ))}
