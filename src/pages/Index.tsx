@@ -25,11 +25,12 @@ const advantages = [
 ]
 
 const guarantees = [
-  { icon: "ShieldCheck", title: "Гарантия сохранности", desc: "Бережно упакуем и довезём ваш груз в целости — отвечаем за каждую вещь" },
-  { icon: "FileText", title: "Работаем по договору", desc: "Официальный договор и закрывающие документы для физлиц и компаний" },
-  { icon: "CreditCard", title: "Оплата любым способом", desc: "Наличные, карта, онлайн-оплата, перевод, безнал для юрлиц — как вам удобно" },
-  { icon: "Settings2", title: "Гибкость", desc: "Предлагаем дополнительные услуги и решаем попутные задачи под ваш запрос" },
-  { icon: "CalendarCheck", title: "Соблюдение сроков", desc: "Приедем вовремя и закончим работу точно в оговорённый срок" },
+  { icon: "ShieldCheck", title: "Груз в сохранности", desc: "Упаковываем, крепим и страхуем — каждая вещь доедет целой. Несём материальную ответственность" },
+  { icon: "CalendarCheck", title: "Приедем вовремя", desc: "Подача за 60 минут по Уфе. Опаздываем — сообщим заранее, не исчезаем" },
+  { icon: "FileText", title: "Всё официально", desc: "Договор, акты, закрывающие документы. Работаем с физлицами и юрлицами" },
+  { icon: "Headphones", title: "На связи 24/7", desc: "Звоните, пишите в любое время — ответим и поможем с любым вопросом по заказу" },
+  { icon: "Settings2", title: "Решаем попутные задачи", desc: "Нужно разобрать мебель, поднять на этаж или вывезти мусор? Сделаем всё за один выезд" },
+  { icon: "CreditCard", title: "Удобная оплата", desc: "Наличные, карта, онлайн, безнал для юрлиц — без предоплаты и скрытых доплат" },
 ]
 
 const TARIFFS: Record<string, number> = {
@@ -256,7 +257,7 @@ export default function Index() {
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
-            <p className="text-gray-400">Работаем честно и без скрытых доплат</p>
+            <p className="text-gray-400">12 лет на рынке — знаем, что важно клиенту</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {guarantees.map((g, i) => (
