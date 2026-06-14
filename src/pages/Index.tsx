@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
-const heroImage = "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/6e9b139d-b5ab-4707-9bfa-91f554f426ac.jpg"
+const heroImage = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/845675ce00bd3d4fc0ec773ff6b8da23/1200x900"
 
 const services = [
   { icon: "Home", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте" },
@@ -34,11 +34,15 @@ export default function Index() {
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div
+        <motion.div
+          initial={{ scale: 1.15 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 6, ease: "easeOut" }}
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/50 to-gray-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/85 via-gray-950/60 to-gray-950" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/60 to-transparent" />
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           <motion.div
