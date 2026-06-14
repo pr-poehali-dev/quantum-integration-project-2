@@ -22,7 +22,7 @@ export default function Overlay() {
           transition={{ duration: 1.2, delay: 0.8 }}
           className="mt-3 text-sm md:text-base text-white/70 font-light max-w-md"
         >
-          Профессионалы дела — грузоперевозки, переезды и доставка по Уфе и Башкортостану
+          Переезды · Доставка · Грузчики · Разнорабочие · Грузоперевозки по Уфе и всей России
         </motion.p>
       </div>
 
@@ -34,8 +34,8 @@ export default function Overlay() {
       >
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/70 text-sm">
           <span className="flex items-center gap-2"><Icon name="Clock" size={16} /> Подача 30 минут</span>
-          <span className="flex items-center gap-2"><Icon name="ShieldCheck" size={16} /> Аккуратные грузчики</span>
-          <span className="flex items-center gap-2"><Icon name="Wallet" size={16} /> Честные цены</span>
+          <span className="flex items-center gap-2"><Icon name="Users" size={16} /> Грузчики и разнорабочие</span>
+          <span className="flex items-center gap-2"><Icon name="MapPin" size={16} /> По городу и всей России</span>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
           <a
