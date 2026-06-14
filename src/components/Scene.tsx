@@ -3,11 +3,18 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { useTexture } from "@react-three/drei"
 import * as THREE from "three"
 
+THREE.DefaultLoadingManager.onStart = () => {}
+new THREE.TextureLoader().setCrossOrigin("anonymous")
+
 const baseImages = [
-  "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/cc8cc524-16f4-41ee-8aa5-4fdde82311c7.jpg",
-  "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/5159441f-d811-4a05-9cc6-d9bb023566a9.jpg",
-  "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/88d8eb4a-9f5a-4411-b4bb-0e1a2d92958e.jpg",
-  "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/1a37ee28-5ed1-4ed0-853e-766d6bd755b9.jpg",
+  "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
+  "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80",
+  "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+  "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
+  "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&q=80",
+  "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
+  "https://images.unsplash.com/photo-1485575301924-6891ef935dcd?w=800&q=80",
 ]
 
 const images = Array.from({ length: 16 }, (_, i) => baseImages[i % baseImages.length])
@@ -77,7 +84,10 @@ export default function Scene() {
   const dragStart = useRef({ x: 0, y: 0 })
   const dragRotation = useRef(0)
 
-  const textures = useTexture(images)
+  const textures = useTexture(images, (textures) => {
+    const arr = Array.isArray(textures) ? textures : [textures]
+    arr.forEach((t) => { t.needsUpdate = true })
+  })
 
   // Mouse parallax effect
   useEffect(() => {
