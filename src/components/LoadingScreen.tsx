@@ -27,9 +27,9 @@ export default function LoadingScreen() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-serif text-4xl mb-4"
+          className="font-serif text-4xl mb-4 text-white"
         >
-          Загрузка
+          ГрузУфа
         </motion.div>
         <motion.div
           initial={{ scaleX: 0 }}
