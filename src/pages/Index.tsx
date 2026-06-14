@@ -238,11 +238,13 @@ export default function Index() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
             <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/50 hover:bg-gray-900/80 transition-all group">
-              <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors">
-                <Icon name={s.icon} size={24} className="text-orange-500" />
+              className="bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 hover:bg-gray-900/80 transition-all group">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
+                  <Icon name={s.icon} size={20} className="text-orange-500" />
+                </div>
+                <h3 className="text-lg font-semibold">{s.title}</h3>
               </div>
-              <h3 className="text-lg font-semibold mb-2">{s.title}</h3>
               <p className="text-gray-400 text-sm">{s.desc}</p>
             </motion.div>
           ))}
