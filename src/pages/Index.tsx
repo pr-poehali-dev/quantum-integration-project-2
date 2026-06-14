@@ -28,6 +28,9 @@ const guarantees = [
   { icon: "ShieldCheck", title: "Гарантия сохранности", desc: "Бережно упакуем и довезём ваш груз в целости — отвечаем за каждую вещь" },
   { icon: "FileText", title: "Работаем по договору", desc: "Официальный договор и закрывающие документы для физлиц и компаний" },
   { icon: "CreditCard", title: "Оплата любым способом", desc: "Наличные, карта, перевод, безнал для юрлиц — как вам удобно" },
+  { icon: "Settings2", title: "Гибкость", desc: "Подстроимся под ваши задачи, время и любой объём работ" },
+  { icon: "Wallet", title: "Рассрочка без переплат", desc: "Удобная оплата частями — без процентов и скрытых комиссий" },
+  { icon: "CalendarCheck", title: "Соблюдение сроков", desc: "Приедем вовремя и закончим работу точно в оговорённый срок" },
 ]
 
 const TARIFFS: Record<string, number> = {
@@ -253,7 +256,7 @@ export default function Index() {
       <section className="py-20 px-6 bg-gray-900/50">
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <h2 className="text-4xl font-bold mb-3">Почему нам <span className="text-orange-500">доверяют</span></h2>
+            <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
             <p className="text-gray-400">Работаем честно и без скрытых доплат</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
