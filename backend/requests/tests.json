@@ -1,0 +1,33 @@
+{
+  "tests": [
+    {
+      "name": "Создание заявки",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван",
+        "phone": "+79991234567",
+        "service": "Квартирный переезд",
+        "details": "2-комнатная квартира",
+        "estimated_price": "3500 руб"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Заявка без обязательных полей",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": ""},
+      "expectedStatus": 400,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
