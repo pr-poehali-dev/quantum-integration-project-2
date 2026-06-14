@@ -22,7 +22,7 @@ export default function Overlay() {
           transition={{ duration: 1.2, delay: 0.8 }}
           className="mt-3 text-sm md:text-base text-white/70 font-light max-w-md"
         >
-          Переезды · Доставка · Грузчики и рабочие · Вывоз мусора · Грузоперевозки по Уфе и всей России
+          Переезды · Доставка · Грузчики · Подсобные рабочие · Вывоз мусора · Грузоперевозки по Уфе и всей России
         </motion.p>
 
         <motion.div
@@ -58,7 +58,7 @@ export default function Overlay() {
       >
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/70 text-sm">
           <span className="flex items-center gap-2"><Icon name="Clock" size={16} /> Подача 30 минут</span>
-          <span className="flex items-center gap-2"><Icon name="Users" size={16} /> Грузчики и рабочие</span>
+          <span className="flex items-center gap-2"><Icon name="Users" size={16} /> Грузчики и подсобные рабочие</span>
           <span className="flex items-center gap-2"><Icon name="MapPin" size={16} /> По городу и всей России</span>
         </div>
         <div className="hidden md:flex flex-wrap justify-center gap-3">
