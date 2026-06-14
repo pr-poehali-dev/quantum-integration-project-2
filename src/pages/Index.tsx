@@ -174,7 +174,7 @@ export default function Index() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-gray-400 mb-10 max-w-xl mx-auto"
           >
-            Переезды · Доставка · Грузчики · Разнорабочие<br />По Уфе, Башкортостану и всей России
+            Переезды · Доставка · Грузчики · Подсобные рабочие · Вывоз мусора<br />По Уфе, Башкортостану и всей России
           </motion.p>
 
           <motion.div
