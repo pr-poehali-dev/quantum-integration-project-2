@@ -38,7 +38,7 @@ export default function Overlay() {
           <span className="flex items-center gap-2"><Icon name="Wallet" size={16} /> Честные цены</span>
         </div>
         <a
-          href="tel:+79000000000"
+          href="tel:+79177775020"
           className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-105"
         >
           <Icon name="Phone" size={18} />
