@@ -349,55 +349,19 @@ export default function Index() {
 
       {/* FOOTER */}
       <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-          {/* О компании */}
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Icon name="Truck" size={20} className="text-orange-500" />
-              <span className="text-white font-semibold text-base">ГрузМастер</span>
-            </div>
-            <p className="leading-relaxed">Грузоперевозки, переезды и доставка по Уфе и всей России. Работаем 24/7, без выходных.</p>
-            <p className="mt-3">
-              <Link to="/privacy" className="hover:text-orange-500 hover:underline">Политика конфиденциальности</Link>
-            </p>
-          </div>
-
-          {/* Контакты */}
-          <div className="space-y-2">
-            <h4 className="text-white font-semibold mb-3">Контакты</h4>
-            <p className="flex items-center gap-2">
-              <Icon name="MapPin" size={16} className="text-orange-500" />
-              <span>г. Уфа, Республика Башкортостан</span>
-            </p>
-            <p className="flex items-center gap-2">
-              <Icon name="Mail" size={16} className="text-orange-500" />
-              <a href="mailto:support@gruzufa.ru" className="hover:text-orange-500">support@gruzufa.ru</a>
-            </p>
-            <p className="flex items-center gap-2">
-              <Icon name="Clock" size={16} className="text-orange-500" />
-              <span>Ежедневно, круглосуточно</span>
-            </p>
-            <div className="flex items-center gap-3 pt-2">
-              <a href="https://wa.me/79177775020" target="_blank" rel="noopener noreferrer" className="hover:text-green-500" aria-label="WhatsApp"><Icon name="MessageCircle" size={20} /></a>
-              <a href="https://t.me/+79177775020" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400" aria-label="Telegram"><Icon name="Send" size={20} /></a>
-            </div>
-          </div>
-
-          {/* Карта */}
-          <div>
-            <h4 className="text-white font-semibold mb-3">Мы на карте</h4>
-            <div className="rounded-xl overflow-hidden border border-gray-800">
-              <iframe
-                title="Карта Уфы"
-                src="https://yandex.ru/map-widget/v1/?ll=55.972%2C54.735&z=11&text=%D0%A3%D1%84%D0%B0"
-                width="100%"
-                height="180"
-                frameBorder="0"
-                className="block"
-                loading="lazy"
-              />
-            </div>
-          </div>
+        <div className="max-w-6xl mx-auto space-y-2 text-center">
+          <p className="flex items-center justify-center gap-2">
+            <Icon name="MapPin" size={16} className="text-orange-500" />
+            <span>г. Уфа, Республика Башкортостан</span>
+          </p>
+          <p className="flex items-center justify-center gap-2">
+            <Icon name="Mail" size={16} className="text-orange-500" />
+            <a href="mailto:support@gruzufa.ru" className="hover:text-orange-500">support@gruzufa.ru</a>
+          </p>
+          <p className="flex items-center justify-center gap-2">
+            <Icon name="Clock" size={16} className="text-orange-500" />
+            <span>Ежедневно, круглосуточно</span>
+          </p>
         </div>
 
         <div className="max-w-6xl mx-auto border-t border-gray-800 mt-8 pt-6 text-center text-gray-500">
