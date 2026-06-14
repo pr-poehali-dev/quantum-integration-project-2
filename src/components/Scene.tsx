@@ -1,10 +1,6 @@
 import { useRef, useState, useEffect } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { useTexture } from "@react-three/drei"
 import * as THREE from "three"
-
-THREE.DefaultLoadingManager.onStart = () => {}
-new THREE.TextureLoader().setCrossOrigin("anonymous")
 
 const baseImages = [
   "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80",
@@ -18,6 +14,41 @@ const baseImages = [
 ]
 
 const images = Array.from({ length: 16 }, (_, i) => baseImages[i % baseImages.length])
+
+function useManualTextures(urls: string[]) {
+  const [textures, setTextures] = useState<THREE.Texture[]>([])
+
+  useEffect(() => {
+    const loader = new THREE.TextureLoader()
+    loader.crossOrigin = "anonymous"
+    const loaded: THREE.Texture[] = []
+    let completed = 0
+
+    urls.forEach((url, i) => {
+      loader.load(
+        url,
+        (tex) => {
+          loaded[i] = tex
+          completed++
+          if (completed === urls.length) {
+            setTextures([...loaded])
+          }
+        },
+        undefined,
+        () => {
+          const fallback = new THREE.Texture()
+          loaded[i] = fallback
+          completed++
+          if (completed === urls.length) {
+            setTextures([...loaded])
+          }
+        }
+      )
+    })
+  }, [])
+
+  return textures
+}
 
 const imagePositions = [
   { pos: [-3.2, 1.8, -2.5] as [number, number, number], rot: [0, 0.4, 0] as [number, number, number], scale: 0.7 },
@@ -84,10 +115,7 @@ export default function Scene() {
   const dragStart = useRef({ x: 0, y: 0 })
   const dragRotation = useRef(0)
 
-  const textures = useTexture(images, (textures) => {
-    const arr = Array.isArray(textures) ? textures : [textures]
-    arr.forEach((t) => { t.needsUpdate = true })
-  })
+  const textures = useManualTextures(images)
 
   // Mouse parallax effect
   useEffect(() => {
@@ -249,7 +277,7 @@ export default function Scene() {
       <pointLight position={[-10, -10, -5]} intensity={0.4} color="#ff6b35" />
       <spotLight position={[0, 5, 5]} intensity={0.3} angle={0.6} penumbra={1} />
 
-      {textures.map((texture, index) => (
+      {textures.length > 0 && textures.map((texture, index) => (
         <FloatingImage key={index} texture={texture} index={index} rotation={rotation} />
       ))}
 
