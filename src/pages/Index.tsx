@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 import { useToast } from "@/hooks/use-toast"
@@ -57,6 +57,20 @@ export default function Index() {
   const [movers, setMovers] = useState(0)
   const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
+
+  // Плавающая кнопка "Позвонить": вверху на калькуляторе, внизу — везде
+  const calcRef = useRef<HTMLElement | null>(null)
+  const [callTop, setCallTop] = useState(false)
+  useEffect(() => {
+    const el = calcRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setCallTop(entry.isIntersecting),
+      { threshold: 0.25 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -258,7 +272,7 @@ export default function Index() {
       </section>
 
       {/* CALCULATOR + FORM */}
-      <section id="zayavka" className="py-20 px-6">
+      <section id="zayavka" ref={calcRef} className="py-20 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
           {/* Калькулятор */}
@@ -333,9 +347,9 @@ export default function Index() {
         <p>Уфа и вся Россия · <a href="tel:+79177775020" className="text-orange-500 hover:underline">+7 917 777-50-20</a></p>
       </footer>
 
-      {/* FIXED MOBILE CALL BUTTON */}
+      {/* FLOATING CALL BUTTON — перемещается наверх на калькуляторе */}
       <a href="tel:+79177775020"
-        className="md:hidden fixed bottom-4 left-4 right-4 z-50 flex items-center justify-center gap-2 bg-orange-500 text-white font-semibold py-4 rounded-full shadow-lg shadow-orange-500/40">
+        className={`fixed left-4 right-4 md:left-auto md:right-6 md:w-auto z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg shadow-orange-500/40 transition-all duration-500 ${callTop ? "top-4" : "bottom-4 md:bottom-6"}`}>
         <Icon name="Phone" size={20} />
         Позвонить +7 917 777-50-20
       </a>
