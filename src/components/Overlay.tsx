@@ -24,6 +24,30 @@ export default function Overlay() {
         >
           Переезды · Доставка · Грузчики · Разнорабочие · Грузоперевозки по Уфе и всей России
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 1 }}
+          className="mt-5 flex flex-wrap justify-center gap-3 md:hidden"
+        >
+          <a
+            href="tel:+79177775020"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-105"
+          >
+            <Icon name="Phone" size={18} />
+            Позвонить
+          </a>
+          <a
+            href="https://wa.me/79177775020"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-green-500 px-7 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+          >
+            <Icon name="MessageCircle" size={18} />
+            WhatsApp
+          </a>
+        </motion.div>
       </div>
 
       <motion.div
@@ -37,7 +61,7 @@ export default function Overlay() {
           <span className="flex items-center gap-2"><Icon name="Users" size={16} /> Грузчики и разнорабочие</span>
           <span className="flex items-center gap-2"><Icon name="MapPin" size={16} /> По городу и всей России</span>
         </div>
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="hidden md:flex flex-wrap justify-center gap-3">
           <a
             href="tel:+79177775020"
             className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-medium text-black transition-transform hover:scale-105"
