@@ -18,7 +18,6 @@ const services = [
 ]
 
 const advantages = [
-  { icon: "Clock", value: "60 мин", label: "Подача автомобиля" },
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
   { icon: "ThumbsUp", value: "12 лет", label: "На рынке" },
   { icon: "Star", value: "6000+", label: "Выполненных заказов" },
@@ -219,7 +218,7 @@ export default function Index() {
 
       {/* ADVANTAGES */}
       <section className="py-16 bg-orange-500">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {advantages.map((a, i) => (
             <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <Icon name={a.icon} size={28} className="mx-auto mb-2 text-white/80" />
