@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="16" fill="#111111"/>
+  <!-- Кузов грузовика -->
+  <rect x="8" y="38" width="52" height="30" rx="4" fill="#f97316"/>
+  <!-- Кабина -->
+  <rect x="60" y="46" width="28" height="22" rx="4" fill="#f97316"/>
+  <!-- Лобовое стекло -->
+  <rect x="63" y="49" width="18" height="12" rx="2" fill="#1a1a1a"/>
+  <!-- Колёса -->
+  <circle cx="24" cy="72" r="9" fill="#1a1a1a"/>
+  <circle cx="24" cy="72" r="4" fill="#f97316"/>
+  <circle cx="72" cy="72" r="9" fill="#1a1a1a"/>
+  <circle cx="72" cy="72" r="4" fill="#f97316"/>
+  <!-- Полоса скорости -->
+  <rect x="8" y="56" width="52" height="4" rx="2" fill="#ea6c00"/>
+</svg>
