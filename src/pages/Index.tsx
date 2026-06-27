@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 import { useToast } from "@/hooks/use-toast"
@@ -49,6 +49,7 @@ const fadeUp = {
 
 export default function Index() {
   const { toast } = useToast()
+  const navigate = useNavigate()
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [service, setService] = useState("Квартирный переезд")
@@ -90,9 +91,9 @@ export default function Index() {
         body: JSON.stringify({ name, phone, service, details }),
       })
       if (!res.ok) throw new Error()
-      toast({ title: "Заявка отправлена!", description: "Перезвоним вам в ближайшее время" })
       if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
       setName(""); setPhone(""); setDetails("")
+      navigate('/thank-you')
     } catch {
       toast({ title: "Ошибка отправки", description: "Позвоните нам напрямую", variant: "destructive" })
     } finally {
@@ -367,7 +368,7 @@ export default function Index() {
             </p>
             <p className="flex items-center justify-center gap-2">
               <Icon name="Phone" size={16} className="text-orange-500" />
-              <a href="tel:+79177775020" className="hover:text-orange-500">+7 917 777-50-20</a>
+              <a href="tel:+79177775020" className="hover:text-orange-500" onClick={() => { if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'phone_click') }}>+7 917 777-50-20</a>
             </p>
             <p className="flex items-center justify-center gap-2">
               <Icon name="Mail" size={16} className="text-orange-500" />
@@ -388,6 +389,7 @@ export default function Index() {
 
       {/* FLOATING CALL BUTTON — перемещается наверх на калькуляторе */}
       <a href="tel:+79177775020"
+        onClick={() => { if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'phone_click') }}
         className={`fixed left-4 right-4 md:left-auto md:right-6 md:w-auto z-50 flex items-center justify-center gap-2 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg transition-all duration-500 ${callTop ? "top-4 bg-black/40 backdrop-blur-md border border-white/20 shadow-black/30" : "bottom-4 md:bottom-6 bg-orange-500 hover:bg-orange-400 shadow-orange-500/40"}`}>
         <Icon name="Phone" size={20} />
         Позвонить +7 917 777-50-20
