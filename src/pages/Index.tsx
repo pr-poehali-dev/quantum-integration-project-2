@@ -91,6 +91,7 @@ export default function Index() {
       })
       if (!res.ok) throw new Error()
       toast({ title: "Заявка отправлена!", description: "Перезвоним вам в ближайшее время" })
+      if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
       setName(""); setPhone(""); setDetails("")
     } catch {
       toast({ title: "Ошибка отправки", description: "Позвоните нам напрямую", variant: "destructive" })
