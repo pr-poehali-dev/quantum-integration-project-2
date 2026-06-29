@@ -59,6 +59,7 @@ def handler(event: dict, context) -> dict:
     conn.close()
 
     smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
+    print(f"[EMAIL] smtp_password set: {bool(smtp_password)}")
     if smtp_password:
         try:
             from_email = 'wertonj@yandex.ru'
@@ -77,11 +78,13 @@ def handler(event: dict, context) -> dict:
             msg['From'] = from_email
             msg['To'] = to_email
 
+            print(f"[EMAIL] Connecting to smtp.yandex.ru:465...")
             with smtplib.SMTP_SSL('smtp.yandex.ru', 465) as smtp:
                 smtp.login(from_email, smtp_password)
                 smtp.sendmail(from_email, to_email, msg.as_string())
-        except Exception:
-            pass
+            print(f"[EMAIL] Sent successfully to {to_email}")
+        except Exception as e:
+            print(f"[EMAIL] ERROR: {e}")
 
     token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
