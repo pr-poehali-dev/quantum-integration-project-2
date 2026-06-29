@@ -15,7 +15,7 @@ export default function ThankYou() {
           <Icon name="CheckCircle" size={40} className="text-white" />
         </div>
         <h1 className="text-3xl font-bold mb-3">Заявка принята!</h1>
-        <p className="text-gray-400 mb-2">Наш менеджер свяжется с вами в ближайшее время.</p>
+        <p className="text-gray-400 mb-2">Мы свяжемся с вами в ближайшее время.</p>
         <p className="text-gray-400 mb-8">Если нужно срочно — позвоните нам напрямую:</p>
         <a
           href="tel:+79177775020"
