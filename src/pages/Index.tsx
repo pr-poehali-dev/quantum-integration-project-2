@@ -225,7 +225,7 @@ export default function Index() {
               <Icon name="Calculator" size={20} />
               Рассчитать стоимость
             </a>
-            <a href="https://max.ru/u/79177675070" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-6 py-4 rounded-full transition-all hover:scale-105 font-semibold">
+            <a href="https://max.ru/u/f9LHodD0cOKus7gIRSgKjl8vNAd8EQDi-Lk7lDShgN2n2qeq-sLJprZ_HHA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-violet-600 hover:bg-violet-500 text-white px-6 py-4 rounded-full transition-all hover:scale-105 font-semibold">
               <Icon name="MessageSquare" size={22} />
               Написать в Макс
             </a>
