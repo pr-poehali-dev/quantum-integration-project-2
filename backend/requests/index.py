@@ -1,14 +1,16 @@
 import json
 import os
+import smtplib
 import urllib.request
 import urllib.parse
 import psycopg2
+from email.mime.text import MIMEText
 
 
 def handler(event: dict, context) -> dict:
     '''
     Принимает заявки на грузоперевозки с лендинга ГрузМастер.
-    Сохраняет в базу данных и отправляет уведомление в Telegram (если настроен).
+    Сохраняет в базу данных, отправляет уведомление на email и в Telegram (если настроен).
     '''
     method = event.get('httpMethod', 'GET')
 
@@ -55,6 +57,31 @@ def handler(event: dict, context) -> dict:
     conn.commit()
     cur.close()
     conn.close()
+
+    smtp_password = os.environ.get('YANDEX_SMTP_PASSWORD')
+    if smtp_password:
+        try:
+            from_email = 'wertonj@yandex.ru'
+            to_email = 'wertonj@yandex.ru'
+            subject = f'Новая заявка ГрузМастер #{request_id}'
+            text = (
+                f'Новая заявка #{request_id}\n\n'
+                f'Имя: {name}\n'
+                f'Телефон: {phone}\n'
+                f'Услуга: {service or "—"}\n'
+                f'Расчёт: {estimated_price or "—"}\n'
+                f'Детали: {details or "—"}'
+            )
+            msg = MIMEText(text, 'plain', 'utf-8')
+            msg['Subject'] = subject
+            msg['From'] = from_email
+            msg['To'] = to_email
+
+            with smtplib.SMTP_SSL('smtp.yandex.ru', 465) as smtp:
+                smtp.login(from_email, smtp_password)
+                smtp.sendmail(from_email, to_email, msg.as_string())
+        except Exception:
+            pass
 
     token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
