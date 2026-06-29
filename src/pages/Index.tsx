@@ -119,7 +119,7 @@ export default function Index() {
       const res = await fetch(REQUESTS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, service, details }),
+        body: JSON.stringify({ name, phone, service, details, estimated_price: estimated ? `${estimated.toLocaleString("ru")} ₽ (${carType}, ${hours} ч, грузчиков: ${movers})` : "" }),
       })
       if (!res.ok) throw new Error()
       if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
