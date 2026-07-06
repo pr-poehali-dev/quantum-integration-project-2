@@ -20,7 +20,7 @@ const services = [
 const advantages = [
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
   { icon: "ThumbsUp", value: "12 лет", label: "На рынке" },
-  { icon: "Star", value: "6000+", label: "Выполненных заказов" },
+  { icon: "Star", value: "6021", label: "Выполненных заказов" },
   { icon: "Handshake", value: "Без", label: "Посредников" },
 ]
 
@@ -413,7 +413,7 @@ export default function Index() {
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
-            <p className="text-gray-400">Более 6 000 выполненных заказов — вот что говорят люди</p>
+            <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {reviews.map((r, i) => (
