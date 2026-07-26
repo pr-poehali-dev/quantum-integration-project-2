@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
@@ -94,21 +94,6 @@ export default function Index() {
   const [movers, setMovers] = useState(0)
   const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
-
-  // Плавающая кнопка "Позвонить": показывается только в средней части сайта (услуги — отзывы),
-  // в шапке и на первом экране/в футере уже есть кнопка звонка
-  const floatZoneRef = useRef<HTMLDivElement | null>(null)
-  const [showFloatingCall, setShowFloatingCall] = useState(false)
-  useEffect(() => {
-    const el = floatZoneRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => setShowFloatingCall(entry.isIntersecting),
-      { threshold: 0.1 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -278,8 +263,6 @@ export default function Index() {
           ))}
         </div>
       </section>
-
-      <div ref={floatZoneRef}>
 
       {/* SERVICES */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
@@ -459,8 +442,6 @@ export default function Index() {
         </div>
       </section>
 
-      </div>
-
       {/* FOOTER */}
       <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -498,14 +479,6 @@ export default function Index() {
           <Link to="/privacy" className="hover:text-orange-500 hover:underline">Политика конфиденциальности</Link>
         </div>
       </footer>
-
-      {/* FLOATING CALL BUTTON — только в зоне "услуги — отзывы", в шапке и футере уже есть кнопка звонка */}
-      <a href="tel:+79177775020"
-        onClick={() => { if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'phone_click') }}
-        className={`fixed left-4 right-4 md:left-auto md:right-6 bottom-4 md:bottom-6 md:w-auto z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg shadow-orange-500/40 transition-all duration-300 ${showFloatingCall ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"}`}>
-        <Icon name="Phone" size={20} />
-        Позвонить +7 917 777-50-20
-      </a>
     </div>
   )
 }
