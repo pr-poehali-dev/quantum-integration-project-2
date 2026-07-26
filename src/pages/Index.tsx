@@ -95,15 +95,16 @@ export default function Index() {
   const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
 
-  // Плавающая кнопка "Позвонить": вверху на калькуляторе, внизу — везде
-  const calcRef = useRef<HTMLElement | null>(null)
-  const [callTop, setCallTop] = useState(false)
+  // Плавающая кнопка "Позвонить": показывается только в средней части сайта (услуги — отзывы),
+  // в шапке и на первом экране/в футере уже есть кнопка звонка
+  const floatZoneRef = useRef<HTMLDivElement | null>(null)
+  const [showFloatingCall, setShowFloatingCall] = useState(false)
   useEffect(() => {
-    const el = calcRef.current
+    const el = floatZoneRef.current
     if (!el) return
     const observer = new IntersectionObserver(
-      ([entry]) => setCallTop(entry.isIntersecting),
-      { threshold: 0.25 }
+      ([entry]) => setShowFloatingCall(entry.isIntersecting),
+      { threshold: 0.1 }
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -162,6 +163,21 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans">
+
+      {/* HEADER */}
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 md:px-6 py-3 bg-gray-950/70 backdrop-blur-md border-b border-white/10">
+        <div className="flex items-center gap-2">
+          <Icon name="Truck" size={22} className="text-orange-500" />
+          <span className="font-semibold text-lg">Груз<span className="text-orange-500">Мастер</span></span>
+        </div>
+        <a href="tel:+79177775020"
+          onClick={() => { if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'phone_click') }}
+          className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white text-sm font-semibold px-4 py-2 rounded-full transition-all">
+          <Icon name="Phone" size={16} />
+          <span className="hidden sm:inline">+7 917 777-50-20</span>
+          <span className="sm:hidden">Позвонить</span>
+        </a>
+      </header>
 
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -263,6 +279,8 @@ export default function Index() {
         </div>
       </section>
 
+      <div ref={floatZoneRef}>
+
       {/* SERVICES */}
       <section className="py-20 px-6 max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
@@ -311,7 +329,7 @@ export default function Index() {
       </section>
 
       {/* CALCULATOR + FORM */}
-      <section id="zayavka" ref={calcRef} className="py-20 px-6">
+      <section id="zayavka" className="py-20 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
           {/* Калькулятор */}
@@ -441,6 +459,8 @@ export default function Index() {
         </div>
       </section>
 
+      </div>
+
       {/* FOOTER */}
       <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
@@ -479,10 +499,10 @@ export default function Index() {
         </div>
       </footer>
 
-      {/* FLOATING CALL BUTTON — перемещается наверх на калькуляторе */}
+      {/* FLOATING CALL BUTTON — только в зоне "услуги — отзывы", в шапке и футере уже есть кнопка звонка */}
       <a href="tel:+79177775020"
         onClick={() => { if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'phone_click') }}
-        className={`fixed left-4 right-4 md:left-auto md:right-6 md:w-auto z-50 flex items-center justify-center gap-2 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg transition-all duration-500 ${callTop ? "top-4 bg-black/40 backdrop-blur-md border border-white/20 shadow-black/30" : "bottom-4 md:bottom-6 bg-orange-500 hover:bg-orange-400 shadow-orange-500/40"}`}>
+        className={`fixed left-4 right-4 md:left-auto md:right-6 bottom-4 md:bottom-6 md:w-auto z-50 flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold py-4 md:px-7 rounded-full shadow-lg shadow-orange-500/40 transition-all duration-300 ${showFloatingCall ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"}`}>
         <Icon name="Phone" size={20} />
         Позвонить +7 917 777-50-20
       </a>
