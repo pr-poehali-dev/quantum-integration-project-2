@@ -1,8 +1,17 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
 export default function ThankYou() {
+  useEffect(() => {
+    const meta = document.createElement("meta")
+    meta.name = "robots"
+    meta.content = "noindex, nofollow"
+    document.head.appendChild(meta)
+    return () => { document.head.removeChild(meta) }
+  }, [])
+
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col items-center justify-center px-6 text-center">
       <motion.div

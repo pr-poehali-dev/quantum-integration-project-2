@@ -201,6 +201,7 @@ export default function Index() {
             className="text-5xl md:text-7xl font-bold mb-4 leading-tight"
           >
             Груз<span className="text-orange-500">Мастер</span>
+            <span className="sr-only"> — грузоперевозки, переезды и грузчики в Уфе</span>
           </motion.h1>
 
           <motion.p
