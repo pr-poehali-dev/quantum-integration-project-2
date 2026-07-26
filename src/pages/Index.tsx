@@ -12,9 +12,9 @@ const heroImageDesktop = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/
 const services = [
   { icon: "Home", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте" },
   { icon: "Building2", title: "Офисные переезды", desc: "Быстро перевезём офис без остановки бизнеса" },
-  { icon: "Package", title: "Доставка грузов", desc: "Доставим любой груз по Уфе и всей России" },
+  { icon: "Package", title: "Доставка грузов", desc: "Доставим любой груз по Уфе" },
   { icon: "Users", title: "Грузчики и рабочие", desc: "Аккуратная погрузка, сборка мебели, демонтаж и подсобные работы" },
-  { icon: "Truck", title: "Грузоперевозки", desc: "Газели и грузовики до 2,5 тонн по городу и России" },
+  { icon: "Truck", title: "Грузоперевозки", desc: "Газели и грузовики до 2,5 тонн по городу" },
   { icon: "Trash2", title: "Вывоз строительного мусора", desc: "Вывезем строительный мусор и хлам с погрузкой и утилизацией" },
 ]
 
@@ -217,7 +217,7 @@ export default function Index() {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-gray-400 mb-10 max-w-xl mx-auto"
           >
-            Переезды · Доставка · Грузчики · Подсобные рабочие · Вывоз мусора<br />По Уфе, Башкортостану и всей России
+            Переезды · Доставка · Грузчики · Подсобные рабочие · Вывоз мусора<br />По Уфе и Башкортостану
           </motion.p>
 
           <motion.div
@@ -363,7 +363,6 @@ export default function Index() {
                 <option>Офисный переезд</option>
                 <option>Доставка груза</option>
                 <option>Грузчики и подсобные рабочие</option>
-                <option>Грузоперевозка по России</option>
                 <option>Вывоз строительного мусора</option>
               </select>
               <textarea value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Что перевезти, откуда и куда" rows={3}
