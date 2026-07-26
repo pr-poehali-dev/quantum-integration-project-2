@@ -444,7 +444,7 @@ export default function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-28 md:pb-8">
+      <footer className="border-t border-gray-800 text-gray-400 text-sm px-6 pt-12 pb-8">
         <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
