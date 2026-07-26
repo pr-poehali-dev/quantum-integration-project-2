@@ -32,3 +32,6 @@ Thumbs.db
 # Cache
 .cache/
 .parcel-cache/
+
+# warmup/handoff артефакты
+tmp/

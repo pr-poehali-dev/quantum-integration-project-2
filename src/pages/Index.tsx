@@ -435,7 +435,6 @@ export default function Index() {
                 <p className="text-gray-300 text-sm leading-relaxed mb-4">"{r.text}"</p>
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-white">{r.name}</span>
-                  <span className="text-gray-500 text-xs">{r.date}</span>
                 </div>
               </motion.div>
             ))}
