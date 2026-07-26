@@ -253,7 +253,7 @@ export default function Index() {
       </section>
 
       {/* ADVANTAGES */}
-      <section className="py-16 bg-orange-500">
+      <section className="py-10 bg-orange-500">
         <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {advantages.map((a, i) => (
             <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
@@ -266,8 +266,8 @@ export default function Index() {
       </section>
 
       {/* SERVICES */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+      <section className="py-14 px-6 max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
           <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
         </motion.div>
@@ -289,9 +289,9 @@ export default function Index() {
       </section>
 
       {/* GUARANTEES */}
-      <section className="py-20 px-6 bg-gray-900/50">
+      <section className="py-14 px-6 bg-gray-900/50">
         <div className="max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
             <p className="text-gray-400">12 лет на рынке — знаем, что важно клиенту</p>
           </motion.div>
@@ -313,7 +313,7 @@ export default function Index() {
       </section>
 
       {/* CALCULATOR + FORM */}
-      <section id="zayavka" className="py-20 px-6">
+      <section id="zayavka" className="py-14 px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
           {/* Калькулятор */}
@@ -383,9 +383,9 @@ export default function Index() {
       </section>
 
       {/* PRICES */}
-      <section className="py-20 px-6 bg-gray-900/50">
+      <section className="py-14 px-6 bg-gray-900/50">
         <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">цены</span></h2>
             <p className="text-gray-400">Прозрачный прайс без скрытых доплат</p>
           </motion.div>
@@ -418,9 +418,9 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section className="py-20 px-6">
+      <section className="py-14 px-6">
         <div className="max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
             <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
           </motion.div>
