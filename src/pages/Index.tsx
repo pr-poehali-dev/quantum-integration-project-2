@@ -266,7 +266,7 @@ export default function Index() {
       </section>
 
       {/* SERVICES */}
-      <section className="py-14 px-6 max-w-6xl mx-auto">
+      <section id="uslugi" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
           <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
@@ -289,7 +289,7 @@ export default function Index() {
       </section>
 
       {/* GUARANTEES */}
-      <section className="py-14 px-6 bg-gray-900/50">
+      <section id="cennost" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
@@ -313,12 +313,12 @@ export default function Index() {
       </section>
 
       {/* CALCULATOR + FORM */}
-      <section id="zayavka" className="py-14 px-6">
+      <section id="zayavka" className="py-14 px-6 scroll-mt-16">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
 
           {/* Калькулятор */}
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-            className="bg-gray-900 border border-gray-800 rounded-3xl p-8">
+          <motion.div id="calculyator" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+            className="bg-gray-900 border border-gray-800 rounded-3xl p-8 scroll-mt-20">
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <Icon name="Calculator" size={24} className="text-orange-500" /> Калькулятор стоимости
             </h3>
@@ -383,7 +383,7 @@ export default function Index() {
       </section>
 
       {/* PRICES */}
-      <section className="py-14 px-6 bg-gray-900/50">
+      <section id="ceny" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">цены</span></h2>
@@ -418,7 +418,7 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section className="py-14 px-6">
+      <section id="otzyvy" className="py-14 px-6 scroll-mt-16">
         <div className="max-w-6xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
