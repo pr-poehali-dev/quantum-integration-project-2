@@ -67,7 +67,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {prices.map((p, i) => (
               <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className={`rounded-2xl p-7 flex flex-col border transition-all ${p.highlight ? "bg-orange-500 border-orange-400" : "bg-gray-900 border-gray-800 hover:border-orange-500/40"}`}>
+                className={`rounded-2xl p-7 flex flex-col border transition-colors ${p.highlight ? "bg-orange-500 border-orange-400" : "bg-gray-900 border-gray-800 hover:border-orange-500/40"}`}>
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${p.highlight ? "bg-white/20" : "bg-orange-500/10"}`}>
                   <Icon name={p.icon} size={24} className={p.highlight ? "text-white" : "text-orange-500"} />
                 </div>
