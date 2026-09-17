@@ -432,28 +432,28 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section id="otzyvy" className="py-14 px-6 scroll-mt-16">
-        <div className="max-w-6xl mx-auto">
+      <section id="otzyvy" className="py-14 scroll-mt-16">
+        <div className="max-w-6xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
             <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {reviews.map((r, i) => (
-              <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all">
-                <div className="flex gap-1 mb-3">
-                  {Array.from({ length: r.stars }).map((_, j) => (
-                    <Icon key={j} name="Star" size={15} className="text-orange-500 fill-orange-500" />
-                  ))}
-                </div>
-                <p className="text-gray-300 text-sm leading-relaxed mb-4">"{r.text}"</p>
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-white">{r.name}</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        </div>
+        <div className="flex gap-6 overflow-x-auto px-6 pb-4 max-w-6xl mx-auto snap-x snap-mandatory">
+          {reviews.map((r, i) => (
+            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
+              <div className="flex gap-1 mb-3">
+                {Array.from({ length: r.stars }).map((_, j) => (
+                  <Icon key={j} name="Star" size={15} className="text-orange-500 fill-orange-500" />
+                ))}
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed mb-4">"{r.text}"</p>
+              <div className="flex items-center justify-between">
+                <span className="font-semibold text-white">{r.name}</span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
