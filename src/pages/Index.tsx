@@ -42,10 +42,11 @@ export default function Index() {
   }
 
   const handleReviewsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
     e.preventDefault()
     const el = reviewsRef.current
     if (!el) return
-    el.scrollLeft += e.deltaY + e.deltaX
+    el.scrollLeft += e.deltaX
   }
 
   // Бесшовный переход отзывов по кругу
