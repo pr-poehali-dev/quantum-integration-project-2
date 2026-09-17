@@ -73,6 +73,7 @@ export default function CalculatorFormSection({
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-5 text-center mb-5">
             <div className="text-gray-400 text-sm mb-1">Примерная стоимость</div>
             <div className="text-3xl font-bold text-orange-500">{estimated.toLocaleString("ru")} ₽</div>
+            <div className="text-gray-500 text-xs mt-1">Без учёта скидок и промокодов</div>
           </div>
 
           <button onClick={onOrderCalc} disabled={sending}
