@@ -42,7 +42,7 @@ export default function ExitIntentPopup({ visible, onClose, name, setName, phone
                 Скидка до 20% по промокоду «ЯНДЕКС»
               </div>
               <h3 className="text-2xl font-bold mb-2">Уже уходите?</h3>
-              <p className="text-gray-400 text-sm">Оставьте телефон — посчитаем стоимость бесплатно и дадим скидку до 20% по промокоду «ЯНДЕКС»</p>
+              <p className="text-gray-400 text-sm">Оставьте телефон — посчитаем стоимость и дадим скидку до 20% по промокоду «ЯНДЕКС».</p>
             </div>
 
             <form onSubmit={onSubmit} className="space-y-3">
