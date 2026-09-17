@@ -103,10 +103,10 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
         <div className="relative max-w-6xl mx-auto">
           <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave}
             onTouchStart={onReviewsMouseEnter} onTouchEnd={onReviewsMouseLeave}
-            className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory touch-pan-x overscroll-x-contain">
+            className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 touch-pan-x overscroll-x-contain">
             {loopedReviews.map((r, i) => (
               <div key={i}
-                className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
+                className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px]">
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-semibold text-white">{r.name}</span>
                   <div className="flex gap-1">
