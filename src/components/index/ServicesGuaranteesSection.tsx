@@ -2,12 +2,12 @@ import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
 const services = [
-  { icon: "Home", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте" },
-  { icon: "Building2", title: "Офисные переезды", desc: "Быстро перевезём офис без остановки бизнеса" },
-  { icon: "Package", title: "Доставка грузов", desc: "Доставим любой груз по Уфе" },
-  { icon: "Users", title: "Грузчики и рабочие", desc: "Аккуратная погрузка, сборка мебели, демонтаж и подсобные работы" },
-  { icon: "Truck", title: "Грузоперевозки", desc: "Газели и грузовики до 2,5 тонн по городу" },
-  { icon: "Trash2", title: "Вывоз строительного мусора", desc: "Вывезем строительный мусор и хлам с погрузкой и утилизацией" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/6bd14e6a-c443-49b0-ad39-86eb1737286c.jpg", title: "Квартирные переезды", desc: "Упакуем, перевезём и расставим мебель на новом месте", price: "от 2 800 ₽" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/3300c9c1-e164-4746-86ad-d568e2ea08bf.jpg", title: "Офисные переезды", desc: "Быстро перевезём офис без остановки бизнеса", price: "от 3 600 ₽" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/98206348-b168-4966-a033-c2eaef539334.jpg", title: "Доставка грузов", desc: "Доставим любой груз по Уфе", price: "от 1 400 ₽" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/8a969e0f-d07c-4cf1-8d94-24beecdca66f.jpg", title: "Грузчики и рабочие", desc: "Аккуратная погрузка, сборка мебели, демонтаж и подсобные работы", price: "от 600 ₽/ч" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/851a2e6c-d9b9-441a-82c0-283f78257d47.jpg", title: "Грузоперевозки", desc: "Газели и грузовики до 2,5 тонн по городу", price: "от 1 400 ₽/ч" },
+  { image: "https://cdn.poehali.dev/projects/8f085890-d695-4439-aeb7-e47a3f336429/files/892f1afa-466a-4432-aeb2-309771b835a2.jpg", title: "Вывоз строительного мусора", desc: "Вывезем строительный мусор и хлам с погрузкой и утилизацией", price: "от 2 500 ₽" },
 ]
 
 const guarantees = [
@@ -38,16 +38,26 @@ export function ServicesSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s, i) => (
-          <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 hover:bg-gray-900/80 transition-all group">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
-                <Icon name={s.icon} size={20} className="text-orange-500" />
+          <motion.a href="#zayavka" key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+            className="relative block rounded-2xl overflow-hidden border border-gray-800 hover:border-orange-500/50 transition-all group h-64">
+            <img src={s.image} alt={s.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-gray-950/10" />
+
+            <div className="absolute inset-0 flex flex-col justify-end p-5">
+              <div className="flex items-center justify-between mb-1">
+                <h3 className="text-lg font-semibold">{s.title}</h3>
+                <span className="text-orange-400 font-bold text-sm shrink-0 ml-2">{s.price}</span>
               </div>
-              <h3 className="text-lg font-semibold">{s.title}</h3>
+              <p className="text-gray-300 text-sm">{s.desc}</p>
             </div>
-            <p className="text-gray-400 text-sm">{s.desc}</p>
-          </motion.div>
+
+            <div className="absolute inset-0 bg-orange-500/90 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="inline-flex items-center gap-2 text-white font-bold text-lg">
+                <Icon name="ArrowRight" size={22} />
+                Заказать
+              </span>
+            </div>
+          </motion.a>
         ))}
       </div>
     </section>
