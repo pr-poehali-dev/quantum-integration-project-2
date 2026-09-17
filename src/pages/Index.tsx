@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 import { useToast } from "@/hooks/use-toast"
@@ -82,6 +82,7 @@ const fadeUp = {
 export default function Index() {
   const { toast } = useToast()
   const navigate = useNavigate()
+  const location = useLocation()
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [service, setService] = useState("Квартирный переезд")
@@ -94,6 +95,19 @@ export default function Index() {
   const [movers, setMovers] = useState(0)
   const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1)
+      const el = document.getElementById(id)
+      if (el) {
+        const timer = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" })
+        }, 100)
+        return () => clearTimeout(timer)
+      }
+    }
+  }, [location.hash])
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
