@@ -103,6 +103,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
         </div>
         <div className="relative max-w-6xl mx-auto">
           <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave} onWheel={onReviewsWheel}
+            onTouchStart={onReviewsMouseEnter} onTouchEnd={onReviewsMouseLeave}
             className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory">
             {loopedReviews.map((r, i) => (
               <div key={i}
