@@ -13,8 +13,6 @@ interface CalculatorFormSectionProps {
   setName: (v: string) => void
   phone: string
   setPhone: (v: string) => void
-  service: string
-  setService: (v: string) => void
   details: string
   setDetails: (v: string) => void
   sending: boolean
@@ -30,7 +28,7 @@ interface CalculatorFormSectionProps {
 }
 
 export default function CalculatorFormSection({
-  name, setName, phone, setPhone, service, setService, details, setDetails, sending,
+  name, setName, phone, setPhone, details, setDetails, sending,
   carType, setCarType, hours, setHours, movers, setMovers, estimated, onOrderCalc, onSubmit,
 }: CalculatorFormSectionProps) {
   const carTypeRef = useRef<HTMLSelectElement>(null)
@@ -94,14 +92,6 @@ export default function CalculatorFormSection({
               className="w-full bg-white/95 text-gray-900 rounded-xl px-4 py-3 outline-none placeholder:text-gray-500" />
             <input value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Телефон" type="tel"
               className="w-full bg-white/95 text-gray-900 rounded-xl px-4 py-3 outline-none placeholder:text-gray-500" />
-            <select value={service} onChange={(e) => setService(e.target.value)}
-              className="w-full bg-white/95 text-gray-900 rounded-xl px-4 py-3 outline-none">
-              <option>Квартирный переезд</option>
-              <option>Офисный переезд</option>
-              <option>Доставка груза</option>
-              <option>Грузчики и подсобные рабочие</option>
-              <option>Вывоз строительного мусора</option>
-            </select>
             <textarea value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Что перевезти, откуда и куда" rows={3}
               className="w-full bg-white/95 text-gray-900 rounded-xl px-4 py-3 outline-none placeholder:text-gray-500 resize-none" />
             <button type="submit" disabled={sending}

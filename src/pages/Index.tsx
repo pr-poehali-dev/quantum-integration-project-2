@@ -16,7 +16,6 @@ export default function Index() {
   const location = useLocation()
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
-  const [service, setService] = useState("Квартирный переезд")
   const [details, setDetails] = useState("")
   const [sending, setSending] = useState(false)
 
@@ -128,7 +127,7 @@ export default function Index() {
       const res = await fetch(REQUESTS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, service, details, estimated_price: estimated ? `${estimated.toLocaleString("ru")} ₽ (${carType}, ${hours} ч, грузчиков: ${movers})` : "" }),
+        body: JSON.stringify({ name, phone, service: "Заявка с сайта", details, estimated_price: estimated ? `${estimated.toLocaleString("ru")} ₽ (${carType}, ${hours} ч, грузчиков: ${movers})` : "" }),
       })
       if (!res.ok) throw new Error()
       if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
@@ -206,7 +205,6 @@ export default function Index() {
       <CalculatorFormSection
         name={name} setName={setName}
         phone={phone} setPhone={setPhone}
-        service={service} setService={setService}
         details={details} setDetails={setDetails}
         sending={sending}
         carType={carType} setCarType={setCarType}
