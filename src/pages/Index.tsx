@@ -4,9 +4,10 @@ import { useToast } from "@/hooks/use-toast"
 import HeroSection from "@/components/index/HeroSection"
 import { ServicesSection, GuaranteesSection } from "@/components/index/ServicesGuaranteesSection"
 import HowWeWorkSection from "@/components/index/HowWeWorkSection"
-import CalculatorFormSection, { TARIFFS } from "@/components/index/CalculatorFormSection"
 import PricesReviewsFooter from "@/components/index/PricesReviewsFooter"
 import ExitIntentPopup from "@/components/index/ExitIntentPopup"
+import OrderPopup from "@/components/index/OrderPopup"
+import CalculatorPopup, { TARIFFS } from "@/components/index/CalculatorPopup"
 
 const REQUESTS_URL = "https://functions.poehali.dev/4e286ec5-b1c9-4760-bd3d-7b601766e226"
 
@@ -18,6 +19,10 @@ export default function Index() {
   const [phone, setPhone] = useState("")
   const [details, setDetails] = useState("")
   const [sending, setSending] = useState(false)
+
+  // Попапы
+  const [orderPopupVisible, setOrderPopupVisible] = useState(false)
+  const [calculatorPopupVisible, setCalculatorPopupVisible] = useState(false)
 
   // Exit-intent попап
   const [exitPopupVisible, setExitPopupVisible] = useState(false)
@@ -104,15 +109,8 @@ export default function Index() {
   }, [])
 
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.slice(1)
-      const el = document.getElementById(id)
-      if (el) {
-        const timer = setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" })
-        }, 100)
-        return () => clearTimeout(timer)
-      }
+    if (location.hash === "#zayavka") {
+      setOrderPopupVisible(true)
     }
   }, [location.hash])
 
@@ -132,6 +130,7 @@ export default function Index() {
       if (!res.ok) throw new Error()
       if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
       setName(""); setPhone(""); setDetails("")
+      setOrderPopupVisible(false)
       navigate('/thank-you')
     } catch {
       toast({ title: "Ошибка отправки", description: "Позвоните нам напрямую", variant: "destructive" })
@@ -140,31 +139,10 @@ export default function Index() {
     }
   }
 
-  const orderCalc = async () => {
-    if (!phone.trim()) {
-      toast({ title: "Укажите телефон в форме ниже", description: "Чтобы мы могли с вами связаться" })
-      document.getElementById("zayavka")?.scrollIntoView({ behavior: "smooth" })
-      return
-    }
-    setSending(true)
-    try {
-      await fetch(REQUESTS_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name || "Расчёт с сайта",
-          phone,
-          service: `Расчёт: ${carType}`,
-          details: `${hours} ч, грузчиков: ${movers}`,
-          estimated_price: `${estimated} ₽`,
-        }),
-      })
-      toast({ title: "Заявка на расчёт отправлена!", description: `Примерно ${estimated} ₽ — уточним детали по телефону` })
-    } catch {
-      toast({ title: "Ошибка отправки", variant: "destructive" })
-    } finally {
-      setSending(false)
-    }
+  const orderCalc = () => {
+    setDetails(`Расчёт: ${carType}, ${hours} ч, грузчиков: ${movers}`)
+    setCalculatorPopupVisible(false)
+    setOrderPopupVisible(true)
   }
 
   const submitExitPopup = async (e: React.FormEvent) => {
@@ -194,31 +172,40 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans">
-      <HeroSection />
+      <HeroSection onOpenCalculator={() => setCalculatorPopupVisible(true)} />
 
-      <ServicesSection />
+      <ServicesSection onOpenOrder={() => setOrderPopupVisible(true)} />
 
       <HowWeWorkSection />
 
       <GuaranteesSection />
 
-      <CalculatorFormSection
-        name={name} setName={setName}
-        phone={phone} setPhone={setPhone}
-        details={details} setDetails={setDetails}
-        sending={sending}
-        carType={carType} setCarType={setCarType}
-        hours={hours} setHours={setHours}
-        movers={movers} setMovers={setMovers}
-        estimated={estimated}
-        onOrderCalc={orderCalc}
-        onSubmit={submit}
-      />
-
       <PricesReviewsFooter
         reviewsRef={reviewsRef}
         onReviewsMouseEnter={() => { isReviewsHovered.current = true }}
         onReviewsMouseLeave={() => { isReviewsHovered.current = false }}
+        onOpenOrder={() => setOrderPopupVisible(true)}
+      />
+
+      <OrderPopup
+        visible={orderPopupVisible}
+        onClose={() => setOrderPopupVisible(false)}
+        name={name} setName={setName}
+        phone={phone} setPhone={setPhone}
+        details={details} setDetails={setDetails}
+        sending={sending}
+        onSubmit={submit}
+      />
+
+      <CalculatorPopup
+        visible={calculatorPopupVisible}
+        onClose={() => setCalculatorPopupVisible(false)}
+        carType={carType} setCarType={setCarType}
+        hours={hours} setHours={setHours}
+        movers={movers} setMovers={setMovers}
+        estimated={estimated}
+        sending={sending}
+        onOrderCalc={orderCalc}
       />
 
       <ExitIntentPopup

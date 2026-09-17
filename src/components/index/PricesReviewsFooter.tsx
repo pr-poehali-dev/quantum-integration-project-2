@@ -50,11 +50,12 @@ interface PricesReviewsFooterProps {
   reviewsRef: RefObject<HTMLDivElement>
   onReviewsMouseEnter: () => void
   onReviewsMouseLeave: () => void
+  onOpenOrder: () => void
 }
 
 const loopedReviews = [...reviews, ...reviews, ...reviews]
 
-export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave }: PricesReviewsFooterProps) {
+export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave, onOpenOrder }: PricesReviewsFooterProps) {
   return (
     <>
       {/* PRICES */}
@@ -81,10 +82,10 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
                     </li>
                   ))}
                 </ul>
-                <a href="#zayavka"
+                <button onClick={onOpenOrder}
                   className={`mt-6 block text-center font-semibold py-3 rounded-xl transition-all hover:scale-[1.02] ${p.highlight ? "bg-white text-orange-500 hover:bg-orange-50" : "bg-orange-500 hover:bg-orange-400 text-white"}`}>
                   Заказать
-                </a>
+                </button>
               </motion.div>
             ))}
           </div>
