@@ -46,9 +46,13 @@ const fadeUp = {
 interface PricesReviewsFooterProps {
   reviewsRef: RefObject<HTMLDivElement>
   scrollReviews: (dir: "left" | "right") => void
+  onReviewsMouseEnter: () => void
+  onReviewsMouseLeave: () => void
 }
 
-export default function PricesReviewsFooter({ reviewsRef, scrollReviews }: PricesReviewsFooterProps) {
+const loopedReviews = [...reviews, ...reviews]
+
+export default function PricesReviewsFooter({ reviewsRef, scrollReviews, onReviewsMouseEnter, onReviewsMouseLeave }: PricesReviewsFooterProps) {
   return (
     <>
       {/* PRICES */}
@@ -103,9 +107,10 @@ export default function PricesReviewsFooter({ reviewsRef, scrollReviews }: Price
             className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gray-900/90 border border-gray-700 items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
             <Icon name="ChevronRight" size={20} />
           </button>
-          <div ref={reviewsRef} className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scroll-smooth">
-            {reviews.map((r, i) => (
-              <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+          <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave}
+            className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scroll-smooth">
+            {loopedReviews.map((r, i) => (
+              <motion.div key={i} custom={i % reviews.length} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
                 className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
                 <div className="flex gap-1 mb-3">
                   {Array.from({ length: r.stars }).map((_, j) => (

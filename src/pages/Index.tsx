@@ -26,12 +26,44 @@ export default function Index() {
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
 
   const reviewsRef = useRef<HTMLDivElement>(null)
+  const isReviewsHovered = useRef(false)
+
   const scrollReviews = (dir: "left" | "right") => {
     const el = reviewsRef.current
     if (!el) return
-    const cardWidth = el.querySelector("div")?.clientWidth ?? 300
-    el.scrollBy({ left: dir === "left" ? -(cardWidth + 24) : cardWidth + 24, behavior: "smooth" })
+    const card = el.querySelector("div") as HTMLElement | null
+    const cardWidth = (card?.offsetWidth ?? 280) + 24
+    const singleSetWidth = el.scrollWidth / 2
+
+    if (dir === "left" && el.scrollLeft - cardWidth < 0) {
+      el.scrollLeft += singleSetWidth
+    }
+    el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" })
   }
+
+  // Бесшовный переход отзывов по кругу
+  useEffect(() => {
+    const el = reviewsRef.current
+    if (!el) return
+    const handleScroll = () => {
+      const singleSetWidth = el.scrollWidth / 2
+      if (el.scrollLeft >= singleSetWidth) {
+        el.scrollLeft -= singleSetWidth
+      }
+    }
+    el.addEventListener("scroll", handleScroll)
+    return () => el.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Автоматическая прокрутка отзывов
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!isReviewsHovered.current) {
+        scrollReviews("right")
+      }
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [])
 
   useEffect(() => {
     if (location.hash) {
@@ -117,7 +149,12 @@ export default function Index() {
         onSubmit={submit}
       />
 
-      <PricesReviewsFooter reviewsRef={reviewsRef} scrollReviews={scrollReviews} />
+      <PricesReviewsFooter
+        reviewsRef={reviewsRef}
+        scrollReviews={scrollReviews}
+        onReviewsMouseEnter={() => { isReviewsHovered.current = true }}
+        onReviewsMouseLeave={() => { isReviewsHovered.current = false }}
+      />
     </div>
   )
 }
