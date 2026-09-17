@@ -122,8 +122,8 @@ export function GuaranteesSection() {
         </motion.div>
       </div>
       <div className="relative max-w-6xl mx-auto">
-        <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-gray-900/50 to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-gray-900/50 to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-[#0a101d] to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-[#0a101d] to-transparent" />
         <div ref={trackRef} onMouseEnter={() => { isHovered.current = true }} onMouseLeave={() => { isHovered.current = false }}
           onTouchStart={() => { isHovered.current = true }} onTouchEnd={() => { isHovered.current = false }}
           className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 touch-pan-x overscroll-x-contain">
