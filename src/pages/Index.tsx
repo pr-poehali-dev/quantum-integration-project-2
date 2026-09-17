@@ -3,8 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { useToast } from "@/hooks/use-toast"
 import HeroSection from "@/components/index/HeroSection"
 import ServicesGuaranteesSection from "@/components/index/ServicesGuaranteesSection"
+import HowWeWorkSection from "@/components/index/HowWeWorkSection"
 import CalculatorFormSection, { TARIFFS } from "@/components/index/CalculatorFormSection"
 import PricesReviewsFooter from "@/components/index/PricesReviewsFooter"
+import ExitIntentPopup from "@/components/index/ExitIntentPopup"
 
 const REQUESTS_URL = "https://functions.poehali.dev/4e286ec5-b1c9-4760-bd3d-7b601766e226"
 
@@ -17,6 +19,13 @@ export default function Index() {
   const [service, setService] = useState("Квартирный переезд")
   const [details, setDetails] = useState("")
   const [sending, setSending] = useState(false)
+
+  // Exit-intent попап
+  const [exitPopupVisible, setExitPopupVisible] = useState(false)
+  const [exitName, setExitName] = useState("")
+  const [exitPhone, setExitPhone] = useState("")
+  const [exitSending, setExitSending] = useState(false)
+  const exitPopupShown = useRef(false)
 
   // Калькулятор
   const [carType, setCarType] = useState("Газель (до 1,5 т)")
@@ -75,6 +84,24 @@ export default function Index() {
       }
     }, 3500)
     return () => clearInterval(timer)
+  }, [])
+
+  // Exit-intent: показываем попап, когда курсор уходит за верхнюю границу окна
+  useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (exitPopupShown.current) return
+      if (e.clientY <= 0) {
+        exitPopupShown.current = true
+        setExitPopupVisible(true)
+      }
+    }
+    const timer = setTimeout(() => {
+      document.addEventListener("mouseleave", handleMouseLeave)
+    }, 4000)
+    return () => {
+      clearTimeout(timer)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+    }
   }, [])
 
   useEffect(() => {
@@ -141,11 +168,38 @@ export default function Index() {
     }
   }
 
+  const submitExitPopup = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!exitName.trim() || !exitPhone.trim()) {
+      toast({ title: "Заполните имя и телефон", variant: "destructive" })
+      return
+    }
+    setExitSending(true)
+    try {
+      const res = await fetch(REQUESTS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: exitName, phone: exitPhone, service: "Скидка 10% (попап)", details: "" }),
+      })
+      if (!res.ok) throw new Error()
+      if (typeof ym !== 'undefined') ym(110197782, 'reachGoal', 'form_submit')
+      setExitPopupVisible(false)
+      setExitName(""); setExitPhone("")
+      navigate('/thank-you')
+    } catch {
+      toast({ title: "Ошибка отправки", description: "Позвоните нам напрямую", variant: "destructive" })
+    } finally {
+      setExitSending(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans">
       <HeroSection />
 
       <ServicesGuaranteesSection />
+
+      <HowWeWorkSection />
 
       <CalculatorFormSection
         name={name} setName={setName}
@@ -165,6 +219,15 @@ export default function Index() {
         reviewsRef={reviewsRef}
         onReviewsMouseEnter={() => { isReviewsHovered.current = true }}
         onReviewsMouseLeave={() => { isReviewsHovered.current = false }}
+      />
+
+      <ExitIntentPopup
+        visible={exitPopupVisible}
+        onClose={() => setExitPopupVisible(false)}
+        name={exitName} setName={setExitName}
+        phone={exitPhone} setPhone={setExitPhone}
+        sending={exitSending}
+        onSubmit={submitExitPopup}
       />
     </div>
   )
