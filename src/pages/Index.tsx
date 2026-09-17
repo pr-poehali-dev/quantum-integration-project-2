@@ -27,7 +27,7 @@ const advantages = [
 
 const guarantees = [
   { icon: "ShieldCheck", title: "Груз в сохранности", desc: "Упаковываем, крепим и страхуем — каждая вещь доедет целой. Несём материальную ответственность" },
-  { icon: "CalendarCheck", title: "Приедем вовремя", desc: "Подача за 60 минут по Уфе. Опаздываем — сообщим заранее, не исчезаем" },
+  { icon: "CalendarCheck", title: "Приедем вовремя", desc: "Подача от 20 минут по Уфе. Опаздываем — сообщим заранее, не исчезаем" },
   { icon: "FileText", title: "Всё официально", desc: "Договор, акты, закрывающие документы. Работаем с физлицами и юрлицами" },
   { icon: "Headphones", title: "На связи 24/7", desc: "Звоните, пишите в любое время — ответим и поможем с любым вопросом по заказу" },
   { icon: "Settings2", title: "Решаем попутные задачи", desc: "Нужно разобрать мебель, поднять на этаж или вывезти мусор? Сделаем всё за один выезд" },
@@ -205,7 +205,7 @@ export default function Index() {
             className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 rounded-full px-4 py-2 text-orange-400 text-sm mb-6"
           >
             <Icon name="Zap" size={14} />
-            Подача за 60 минут по Уфе
+            Подача от 20 минут по Уфе
           </motion.div>
 
           <motion.h1
