@@ -53,7 +53,7 @@ interface PricesReviewsFooterProps {
   onReviewsWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }
 
-const loopedReviews = [...reviews, ...reviews]
+const loopedReviews = [...reviews, ...reviews, ...reviews]
 
 export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave, onReviewsWheel }: PricesReviewsFooterProps) {
   return (

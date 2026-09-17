@@ -33,11 +33,6 @@ export default function Index() {
     if (!el) return
     const card = el.querySelector("div") as HTMLElement | null
     const cardWidth = (card?.offsetWidth ?? 280) + 24
-    const singleSetWidth = el.scrollWidth / 2
-
-    if (dir === "left" && el.scrollLeft - cardWidth < 0) {
-      el.scrollLeft += singleSetWidth
-    }
     el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" })
   }
 
@@ -49,14 +44,19 @@ export default function Index() {
     el.scrollLeft += e.deltaX
   }
 
-  // Бесшовный переход отзывов по кругу
+  // Бесшовный переход отзывов по кругу в обе стороны
   useEffect(() => {
     const el = reviewsRef.current
     if (!el) return
+    const singleSetWidth = el.scrollWidth / 3
+    el.scrollLeft = singleSetWidth
+
     const handleScroll = () => {
-      const singleSetWidth = el.scrollWidth / 2
-      if (el.scrollLeft >= singleSetWidth) {
-        el.scrollLeft -= singleSetWidth
+      const width = el.scrollWidth / 3
+      if (el.scrollLeft >= width * 2) {
+        el.scrollLeft -= width
+      } else if (el.scrollLeft <= 0) {
+        el.scrollLeft += width
       }
     }
     el.addEventListener("scroll", handleScroll)
