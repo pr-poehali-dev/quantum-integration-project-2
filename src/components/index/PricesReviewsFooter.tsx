@@ -65,10 +65,14 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
             <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">цены</span></h2>
             <p className="text-gray-400">Прозрачный прайс без скрытых доплат</p>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        </div>
+        <div className="relative max-w-5xl mx-auto">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 z-10 bg-gradient-to-r from-[#0a0f1d] to-transparent sm:hidden" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 z-10 bg-gradient-to-l from-[#0a0f1d] to-transparent sm:hidden" />
+          <div className="no-scrollbar flex sm:grid sm:grid-cols-3 gap-6 overflow-x-auto sm:overflow-visible px-6 sm:px-0 pb-4 sm:pb-0 touch-pan-x overscroll-x-contain">
             {prices.map((p, i) => (
               <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className={`rounded-2xl p-7 flex flex-col border transition-colors ${p.highlight ? "bg-orange-500 border-orange-400" : "bg-gray-900 border-gray-800 hover:border-orange-500/40"}`}>
+                className={`rounded-2xl p-7 flex flex-col border transition-colors shrink-0 w-[260px] sm:w-auto ${p.highlight ? "bg-orange-500 border-orange-400" : "bg-gray-900 border-gray-800 hover:border-orange-500/40"}`}>
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${p.highlight ? "bg-white/20" : "bg-orange-500/10"}`}>
                   <Icon name={p.icon} size={24} className={p.highlight ? "text-white" : "text-orange-500"} />
                 </div>
@@ -89,8 +93,8 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-gray-500 text-sm mt-6">Минимальный заказ — 2 часа. Точная стоимость рассчитывается под ваш заказ.</p>
         </div>
+        <p className="text-center text-gray-500 text-sm mt-6 px-6">Минимальный заказ — 2 часа. Точная стоимость рассчитывается под ваш заказ.</p>
       </section>
 
       {/* REVIEWS */}
