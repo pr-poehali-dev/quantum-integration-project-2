@@ -89,38 +89,36 @@ export default function PricesReviewsFooter({ reviewsRef, scrollReviews }: Price
       {/* REVIEWS */}
       <section id="otzyvy" className="py-14 scroll-mt-16">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 flex items-end justify-between gap-4">
-            <div className="flex-1">
-              <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
-              <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
-            </div>
-            <div className="hidden md:flex gap-2 shrink-0">
-              <button onClick={() => scrollReviews("left")} aria-label="Прокрутить влево"
-                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
-                <Icon name="ChevronLeft" size={20} />
-              </button>
-              <button onClick={() => scrollReviews("right")} aria-label="Прокрутить вправо"
-                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
-                <Icon name="ChevronRight" size={20} />
-              </button>
-            </div>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
+            <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
           </motion.div>
         </div>
-        <div ref={reviewsRef} className="flex gap-6 overflow-x-auto px-6 pb-4 max-w-6xl mx-auto snap-x snap-mandatory scroll-smooth">
-          {reviews.map((r, i) => (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
-              <div className="flex gap-1 mb-3">
-                {Array.from({ length: r.stars }).map((_, j) => (
-                  <Icon key={j} name="Star" size={15} className="text-orange-500 fill-orange-500" />
-                ))}
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">"{r.text}"</p>
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-white">{r.name}</span>
-              </div>
-            </motion.div>
-          ))}
+        <div className="relative max-w-6xl mx-auto">
+          <button onClick={() => scrollReviews("left")} aria-label="Прокрутить влево"
+            className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gray-900/90 border border-gray-700 items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
+            <Icon name="ChevronLeft" size={20} />
+          </button>
+          <button onClick={() => scrollReviews("right")} aria-label="Прокрутить вправо"
+            className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gray-900/90 border border-gray-700 items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
+            <Icon name="ChevronRight" size={20} />
+          </button>
+          <div ref={reviewsRef} className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scroll-smooth">
+            {reviews.map((r, i) => (
+              <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+                className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
+                <div className="flex gap-1 mb-3">
+                  {Array.from({ length: r.stars }).map((_, j) => (
+                    <Icon key={j} name="Star" size={15} className="text-orange-500 fill-orange-500" />
+                  ))}
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-4">"{r.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-white">{r.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
