@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
@@ -95,6 +95,14 @@ export default function Index() {
   const [movers, setMovers] = useState(0)
   const moverRate = 600
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
+
+  const reviewsRef = useRef<HTMLDivElement>(null)
+  const scrollReviews = (dir: "left" | "right") => {
+    const el = reviewsRef.current
+    if (!el) return
+    const cardWidth = el.querySelector("div")?.clientWidth ?? 300
+    el.scrollBy({ left: dir === "left" ? -(cardWidth + 24) : cardWidth + 24, behavior: "smooth" })
+  }
 
   useEffect(() => {
     if (location.hash) {
@@ -434,12 +442,24 @@ export default function Index() {
       {/* REVIEWS */}
       <section id="otzyvy" className="py-14 scroll-mt-16">
         <div className="max-w-6xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
-            <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 flex items-end justify-between gap-4">
+            <div className="flex-1">
+              <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
+              <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
+            </div>
+            <div className="hidden md:flex gap-2 shrink-0">
+              <button onClick={() => scrollReviews("left")} aria-label="Прокрутить влево"
+                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
+                <Icon name="ChevronLeft" size={20} />
+              </button>
+              <button onClick={() => scrollReviews("right")} aria-label="Прокрутить вправо"
+                className="w-10 h-10 rounded-full border border-gray-700 flex items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
+                <Icon name="ChevronRight" size={20} />
+              </button>
+            </div>
           </motion.div>
         </div>
-        <div className="flex gap-6 overflow-x-auto px-6 pb-4 max-w-6xl mx-auto snap-x snap-mandatory">
+        <div ref={reviewsRef} className="flex gap-6 overflow-x-auto px-6 pb-4 max-w-6xl mx-auto snap-x snap-mandatory scroll-smooth">
           {reviews.map((r, i) => (
             <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
               className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
