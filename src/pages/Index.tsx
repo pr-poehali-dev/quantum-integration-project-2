@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
 import { useToast } from "@/hooks/use-toast"
 import HeroSection from "@/components/index/HeroSection"
-import ServicesGuaranteesSection from "@/components/index/ServicesGuaranteesSection"
+import { ServicesSection, GuaranteesSection } from "@/components/index/ServicesGuaranteesSection"
 import HowWeWorkSection from "@/components/index/HowWeWorkSection"
 import CalculatorFormSection, { TARIFFS } from "@/components/index/CalculatorFormSection"
 import PricesReviewsFooter from "@/components/index/PricesReviewsFooter"
@@ -197,9 +197,11 @@ export default function Index() {
     <div className="min-h-screen bg-gray-950 text-white font-sans">
       <HeroSection />
 
-      <ServicesGuaranteesSection />
+      <ServicesSection />
 
       <HowWeWorkSection />
+
+      <GuaranteesSection />
 
       <CalculatorFormSection
         name={name} setName={setName}

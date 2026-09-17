@@ -28,55 +28,55 @@ const fadeUp = {
   }),
 }
 
-export default function ServicesGuaranteesSection() {
+export function ServicesSection() {
   return (
-    <>
-      {/* SERVICES */}
-      <section id="uslugi" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
-          <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
-        </motion.div>
+    <section id="uslugi" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
+        <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s, i) => (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 hover:bg-gray-900/80 transition-all group">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
-                  <Icon name={s.icon} size={20} className="text-orange-500" />
-                </div>
-                <h3 className="text-lg font-semibold">{s.title}</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s, i) => (
+          <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+            className="bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 hover:bg-gray-900/80 transition-all group">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
+                <Icon name={s.icon} size={20} className="text-orange-500" />
               </div>
-              <p className="text-gray-400 text-sm">{s.desc}</p>
+              <h3 className="text-lg font-semibold">{s.title}</h3>
+            </div>
+            <p className="text-gray-400 text-sm">{s.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+export function GuaranteesSection() {
+  return (
+    <section id="cennost" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
+      <div className="max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
+          <p className="text-gray-400">12 лет на рынке — знаем, что важно клиенту</p>
+        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {guarantees.map((g, i) => (
+            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              className="bg-gray-950 border border-gray-800 rounded-2xl p-4">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                  <Icon name={g.icon} size={20} className="text-orange-500" />
+                </div>
+                <h3 className="text-lg font-semibold">{g.title}</h3>
+              </div>
+              <p className="text-gray-400 text-sm">{g.desc}</p>
             </motion.div>
           ))}
         </div>
-      </section>
-
-      {/* GUARANTEES */}
-      <section id="cennost" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
-        <div className="max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-            <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
-            <p className="text-gray-400">12 лет на рынке — знаем, что важно клиенту</p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {guarantees.map((g, i) => (
-              <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="bg-gray-950 border border-gray-800 rounded-2xl p-4">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center">
-                    <Icon name={g.icon} size={20} className="text-orange-500" />
-                  </div>
-                  <h3 className="text-lg font-semibold">{g.title}</h3>
-                </div>
-                <p className="text-gray-400 text-sm">{g.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
