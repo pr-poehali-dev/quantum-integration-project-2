@@ -7,7 +7,7 @@ const heroImageDesktop = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/
 const advantages = [
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
   { icon: "ThumbsUp", value: "12 лет", label: "На рынке" },
-  { icon: "Star", value: "6021", label: "Выполненных заказов" },
+  { icon: "Star", value: "6136", label: "Выполненных заказов" },
   { icon: "Handshake", value: "Без", label: "Посредников" },
 ]
 

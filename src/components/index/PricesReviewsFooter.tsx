@@ -97,7 +97,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
         <div className="max-w-6xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Отзывы <span className="text-orange-500">клиентов</span></h2>
-            <p className="text-gray-400">Более 6 021 выполненных заказов — вот что говорят люди</p>
+            <p className="text-gray-400">Более 6 136 выполненных заказов — вот что говорят люди</p>
           </motion.div>
         </div>
         <div className="relative max-w-6xl mx-auto">
