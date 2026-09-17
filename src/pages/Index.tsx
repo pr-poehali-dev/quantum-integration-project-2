@@ -41,6 +41,13 @@ export default function Index() {
     el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" })
   }
 
+  const handleReviewsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault()
+    const el = reviewsRef.current
+    if (!el) return
+    el.scrollLeft += e.deltaY + e.deltaX
+  }
+
   // Бесшовный переход отзывов по кругу
   useEffect(() => {
     const el = reviewsRef.current
@@ -151,9 +158,9 @@ export default function Index() {
 
       <PricesReviewsFooter
         reviewsRef={reviewsRef}
-        scrollReviews={scrollReviews}
         onReviewsMouseEnter={() => { isReviewsHovered.current = true }}
         onReviewsMouseLeave={() => { isReviewsHovered.current = false }}
+        onReviewsWheel={handleReviewsWheel}
       />
     </div>
   )

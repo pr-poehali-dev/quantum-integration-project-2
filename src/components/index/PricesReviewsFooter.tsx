@@ -45,14 +45,14 @@ const fadeUp = {
 
 interface PricesReviewsFooterProps {
   reviewsRef: RefObject<HTMLDivElement>
-  scrollReviews: (dir: "left" | "right") => void
   onReviewsMouseEnter: () => void
   onReviewsMouseLeave: () => void
+  onReviewsWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }
 
 const loopedReviews = [...reviews, ...reviews]
 
-export default function PricesReviewsFooter({ reviewsRef, scrollReviews, onReviewsMouseEnter, onReviewsMouseLeave }: PricesReviewsFooterProps) {
+export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave, onReviewsWheel }: PricesReviewsFooterProps) {
   return (
     <>
       {/* PRICES */}
@@ -99,15 +99,7 @@ export default function PricesReviewsFooter({ reviewsRef, scrollReviews, onRevie
           </motion.div>
         </div>
         <div className="relative max-w-6xl mx-auto">
-          <button onClick={() => scrollReviews("left")} aria-label="Прокрутить влево"
-            className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gray-900/90 border border-gray-700 items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
-            <Icon name="ChevronLeft" size={20} />
-          </button>
-          <button onClick={() => scrollReviews("right")} aria-label="Прокрутить вправо"
-            className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gray-900/90 border border-gray-700 items-center justify-center hover:bg-orange-500 hover:border-orange-500 transition-colors">
-            <Icon name="ChevronRight" size={20} />
-          </button>
-          <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave}
+          <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave} onWheel={onReviewsWheel}
             className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scroll-smooth">
             {loopedReviews.map((r, i) => (
               <motion.div key={i} custom={i % reviews.length} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
