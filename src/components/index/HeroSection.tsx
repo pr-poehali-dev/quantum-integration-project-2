@@ -97,7 +97,7 @@ export default function HeroSection({ onOpenCalculator }: HeroSectionProps) {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-gray-400 mb-10 max-w-xl mx-auto"
           >
-            Переезды · Доставка · Грузчики · Подсобные рабочие · Вывоз мусора<br />По Уфе и Башкортостану
+            Газель · Грузчики · Переезды · Доставка · Вывоз мусора<br />По Уфе и Башкортостану
           </motion.p>
 
           <motion.div
