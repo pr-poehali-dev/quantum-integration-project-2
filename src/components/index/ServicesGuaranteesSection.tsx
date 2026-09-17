@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
@@ -62,7 +63,56 @@ export function ServicesSection({ onOpenOrder }: ServicesSectionProps) {
   )
 }
 
+const loopedGuarantees = [...guarantees, ...guarantees, ...guarantees]
+
 export function GuaranteesSection() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const isHovered = useRef(false)
+
+  const scroll = (dir: "left" | "right") => {
+    const el = trackRef.current
+    if (!el) return
+    const card = el.querySelector("div") as HTMLElement | null
+    const cardWidth = (card?.offsetWidth ?? 280) + 24
+    el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el) return
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      el.scrollLeft += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
+    }
+    el.addEventListener("wheel", handleWheel, { passive: false })
+    return () => el.removeEventListener("wheel", handleWheel)
+  }, [])
+
+  useEffect(() => {
+    const el = trackRef.current
+    if (!el) return
+    const singleSetWidth = el.scrollWidth / 3
+    el.scrollLeft = singleSetWidth
+
+    const handleScroll = () => {
+      const width = el.scrollWidth / 3
+      if (el.scrollLeft >= width * 2) {
+        el.scrollLeft -= width
+      } else if (el.scrollLeft <= 0) {
+        el.scrollLeft += width
+      }
+    }
+    el.addEventListener("scroll", handleScroll)
+    return () => el.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!isHovered.current) scroll("right")
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section id="cennost" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
@@ -70,10 +120,16 @@ export function GuaranteesSection() {
           <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
           <p className="text-gray-400">12 лет на рынке — знаем, что важно клиенту</p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {guarantees.map((g, i) => (
-            <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-              className="bg-gray-950 border border-gray-800 rounded-2xl p-4">
+      </div>
+      <div className="relative max-w-6xl mx-auto">
+        <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-gray-900/50 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-gray-900/50 to-transparent" />
+        <div ref={trackRef} onMouseEnter={() => { isHovered.current = true }} onMouseLeave={() => { isHovered.current = false }}
+          onTouchStart={() => { isHovered.current = true }} onTouchEnd={() => { isHovered.current = false }}
+          className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 touch-pan-x overscroll-x-contain">
+          {loopedGuarantees.map((g, i) => (
+            <div key={i}
+              className="bg-gray-950 border border-gray-800 rounded-2xl p-4 shrink-0 w-[260px] md:w-[300px]">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center">
                   <Icon name={g.icon} size={20} className="text-orange-500" />
@@ -81,7 +137,7 @@ export function GuaranteesSection() {
                 <h3 className="text-lg font-semibold">{g.title}</h3>
               </div>
               <p className="text-gray-400 text-sm">{g.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
