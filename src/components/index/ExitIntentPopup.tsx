@@ -39,10 +39,10 @@ export default function ExitIntentPopup({ visible, onClose, name, setName, phone
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/40 rounded-full px-4 py-1.5 text-orange-400 text-sm mb-4">
                 <Icon name="Percent" size={14} />
-                Скидка 10% на первый заказ
+                Скидка до 20% по промокоду «ЯНДЕКС»
               </div>
               <h3 className="text-2xl font-bold mb-2">Уже уходите?</h3>
-              <p className="text-gray-400 text-sm">Оставьте телефон — посчитаем стоимость бесплатно и дадим скидку 10% на первый переезд</p>
+              <p className="text-gray-400 text-sm">Оставьте телефон — посчитаем стоимость бесплатно и дадим скидку до 20% по промокоду «ЯНДЕКС»</p>
             </div>
 
             <form onSubmit={onSubmit} className="space-y-3">
