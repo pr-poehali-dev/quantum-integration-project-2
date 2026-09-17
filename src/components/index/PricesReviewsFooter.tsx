@@ -102,7 +102,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
           <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave} onWheel={onReviewsWheel}
             className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory scroll-smooth">
             {loopedReviews.map((r, i) => (
-              <motion.div key={i} custom={i % reviews.length} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+              <div key={i}
                 className="bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 transition-all shrink-0 w-[280px] md:w-[320px] snap-start">
                 <div className="flex gap-1 mb-3">
                   {Array.from({ length: r.stars }).map((_, j) => (
@@ -113,7 +113,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-white">{r.name}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
