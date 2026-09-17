@@ -140,7 +140,6 @@ export default function Index() {
   }
 
   const orderCalc = () => {
-    setDetails(`Расчёт: ${carType}, ${hours} ч, грузчиков: ${movers}`)
     setCalculatorPopupVisible(false)
     setOrderPopupVisible(true)
   }
