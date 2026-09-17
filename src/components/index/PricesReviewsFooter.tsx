@@ -101,6 +101,8 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
           </motion.div>
         </div>
         <div className="relative max-w-6xl mx-auto">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-gray-950 to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-gray-950 to-transparent" />
           <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave}
             onTouchStart={onReviewsMouseEnter} onTouchEnd={onReviewsMouseLeave}
             className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 touch-pan-x overscroll-x-contain">
