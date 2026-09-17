@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
@@ -28,15 +29,24 @@ interface CalculatorFormSectionProps {
   onSubmit: (e: React.FormEvent) => void
 }
 
-const passWheelToPage = (e: React.WheelEvent) => {
-  e.preventDefault()
-  window.scrollBy(0, e.deltaY)
-}
-
 export default function CalculatorFormSection({
   name, setName, phone, setPhone, service, setService, details, setDetails, sending,
   carType, setCarType, hours, setHours, movers, setMovers, estimated, onOrderCalc, onSubmit,
 }: CalculatorFormSectionProps) {
+  const carTypeRef = useRef<HTMLSelectElement>(null)
+  const hoursRef = useRef<HTMLInputElement>(null)
+  const moversRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const elements = [carTypeRef.current, hoursRef.current, moversRef.current].filter(Boolean) as HTMLElement[]
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      window.scrollBy(0, e.deltaY)
+    }
+    elements.forEach((el) => el.addEventListener("wheel", handleWheel, { passive: false }))
+    return () => elements.forEach((el) => el.removeEventListener("wheel", handleWheel))
+  }, [])
+
   return (
     <section id="zayavka" className="py-14 px-6 scroll-mt-16">
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
@@ -49,17 +59,17 @@ export default function CalculatorFormSection({
           </h3>
 
           <label className="block text-sm text-gray-400 mb-2">Тип автомобиля</label>
-          <select value={carType} onChange={(e) => setCarType(e.target.value)} onWheel={passWheelToPage}
+          <select ref={carTypeRef} value={carType} onChange={(e) => setCarType(e.target.value)}
             className="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 mb-5 text-white focus:border-orange-500 outline-none">
             {Object.keys(TARIFFS).map((t) => <option key={t}>{t}</option>)}
           </select>
 
           <label className="block text-sm text-gray-400 mb-2">Время работы: {hours} ч <span className="text-gray-500">(минимум 2 ч)</span></label>
-          <input type="range" min={2} max={10} value={hours} onChange={(e) => setHours(+e.target.value)} onWheel={passWheelToPage}
+          <input ref={hoursRef} type="range" min={2} max={10} value={hours} onChange={(e) => setHours(+e.target.value)}
             className="w-full mb-5 accent-orange-500" />
 
           <label className="block text-sm text-gray-400 mb-2">Грузчиков: {movers}</label>
-          <input type="range" min={0} max={5} value={movers} onChange={(e) => setMovers(+e.target.value)} onWheel={passWheelToPage}
+          <input ref={moversRef} type="range" min={0} max={5} value={movers} onChange={(e) => setMovers(+e.target.value)}
             className="w-full mb-6 accent-orange-500" />
 
           <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-5 text-center mb-5">
