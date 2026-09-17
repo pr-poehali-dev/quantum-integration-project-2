@@ -36,13 +36,17 @@ export default function Index() {
     el.scrollBy({ left: dir === "left" ? -cardWidth : cardWidth, behavior: "smooth" })
   }
 
-  const handleReviewsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return
-    e.preventDefault()
+  // Прокрутка отзывов колесиком мыши (нативный listener, чтобы preventDefault реально работал)
+  useEffect(() => {
     const el = reviewsRef.current
     if (!el) return
-    el.scrollLeft += e.deltaX
-  }
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault()
+      el.scrollLeft += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY
+    }
+    el.addEventListener("wheel", handleWheel, { passive: false })
+    return () => el.removeEventListener("wheel", handleWheel)
+  }, [])
 
   // Бесшовный переход отзывов по кругу в обе стороны
   useEffect(() => {
@@ -161,7 +165,6 @@ export default function Index() {
         reviewsRef={reviewsRef}
         onReviewsMouseEnter={() => { isReviewsHovered.current = true }}
         onReviewsMouseLeave={() => { isReviewsHovered.current = false }}
-        onReviewsWheel={handleReviewsWheel}
       />
     </div>
   )

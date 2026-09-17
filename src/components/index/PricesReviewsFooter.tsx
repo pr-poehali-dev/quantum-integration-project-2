@@ -50,12 +50,11 @@ interface PricesReviewsFooterProps {
   reviewsRef: RefObject<HTMLDivElement>
   onReviewsMouseEnter: () => void
   onReviewsMouseLeave: () => void
-  onReviewsWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }
 
 const loopedReviews = [...reviews, ...reviews, ...reviews]
 
-export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave, onReviewsWheel }: PricesReviewsFooterProps) {
+export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, onReviewsMouseLeave }: PricesReviewsFooterProps) {
   return (
     <>
       {/* PRICES */}
@@ -102,7 +101,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
           </motion.div>
         </div>
         <div className="relative max-w-6xl mx-auto">
-          <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave} onWheel={onReviewsWheel}
+          <div ref={reviewsRef} onMouseEnter={onReviewsMouseEnter} onMouseLeave={onReviewsMouseLeave}
             onTouchStart={onReviewsMouseEnter} onTouchEnd={onReviewsMouseLeave}
             className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory touch-pan-x overscroll-x-contain">
             {loopedReviews.map((r, i) => (
