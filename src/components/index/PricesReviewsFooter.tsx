@@ -59,7 +59,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
   return (
     <>
       {/* PRICES */}
-      <section id="ceny" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
+      <section id="ceny" className="pt-6 pb-14 px-6 bg-gray-900/50 scroll-mt-16">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">цены</span></h2>

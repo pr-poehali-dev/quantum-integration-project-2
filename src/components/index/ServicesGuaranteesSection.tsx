@@ -141,7 +141,7 @@ export function GuaranteesSection() {
   }, [])
 
   return (
-    <section id="cennost" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
+    <section id="cennost" className="pt-14 pb-6 px-6 bg-gray-900/50 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
