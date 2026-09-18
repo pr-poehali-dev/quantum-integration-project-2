@@ -19,7 +19,7 @@ const fadeUp = {
 
 export default function HowWeWorkSection() {
   return (
-    <section id="kak-rabotaem" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
+    <section id="kak-rabotaem" className="pt-6 pb-14 px-6 max-w-6xl mx-auto scroll-mt-16">
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
         <h2 className="text-4xl font-bold mb-3">Как мы <span className="text-orange-500">работаем</span></h2>
         <p className="text-gray-400">Простой путь от заявки до перевезённых вещей — никаких сюрпризов</p>

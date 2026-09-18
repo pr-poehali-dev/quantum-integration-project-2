@@ -75,7 +75,7 @@ function ServiceCard({ s, i, onOpenOrder }: ServiceCardProps) {
 
 export function ServicesSection({ onOpenOrder }: ServicesSectionProps) {
   return (
-    <section id="uslugi" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
+    <section id="uslugi" className="pt-14 pb-6 px-6 max-w-6xl mx-auto scroll-mt-16">
       <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
         <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
         <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
