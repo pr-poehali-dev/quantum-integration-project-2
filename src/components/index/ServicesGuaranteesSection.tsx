@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
@@ -33,6 +33,46 @@ interface ServicesSectionProps {
   onOpenOrder: () => void
 }
 
+interface ServiceCardProps {
+  s: { icon: string; title: string; desc: string }
+  i: number
+  onOpenOrder: () => void
+}
+
+function ServiceCard({ s, i, onOpenOrder }: ServiceCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [isCentered, setIsCentered] = useState(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsCentered(entry.isIntersecting),
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <motion.div ref={cardRef} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+      className="flex flex-col bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 transition-colors group overflow-hidden">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
+          <Icon name={s.icon} size={20} className="text-orange-500" />
+        </div>
+        <h3 className="text-lg font-semibold">{s.title}</h3>
+      </div>
+      <p className="text-gray-400 text-sm flex-1">{s.desc}</p>
+      <button onClick={onOpenOrder}
+        className={`flex items-center justify-end gap-1 text-orange-500 hover:text-orange-400 font-semibold text-sm mt-3 transition-opacity md:opacity-0 md:group-hover:opacity-100 ${isCentered ? "opacity-100" : "opacity-0"}`}>
+        Заказать
+        <Icon name="ArrowRight" size={14} />
+      </button>
+    </motion.div>
+  )
+}
+
 export function ServicesSection({ onOpenOrder }: ServicesSectionProps) {
   return (
     <section id="uslugi" className="py-14 px-6 max-w-6xl mx-auto scroll-mt-16">
@@ -43,21 +83,7 @@ export function ServicesSection({ onOpenOrder }: ServicesSectionProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s, i) => (
-          <motion.div key={i} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-            className="flex flex-col bg-gray-900 border border-gray-800 rounded-2xl p-4 hover:border-orange-500/50 transition-colors group overflow-hidden">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 shrink-0 bg-orange-500/10 rounded-lg flex items-center justify-center group-hover:bg-orange-500/20 transition-colors">
-                <Icon name={s.icon} size={20} className="text-orange-500" />
-              </div>
-              <h3 className="text-lg font-semibold">{s.title}</h3>
-            </div>
-            <p className="text-gray-400 text-sm flex-1">{s.desc}</p>
-            <button onClick={onOpenOrder}
-              className="flex items-center justify-end gap-1 text-orange-500 hover:text-orange-400 font-semibold text-sm mt-3 transition-colors">
-              Заказать
-              <Icon name="ArrowRight" size={14} />
-            </button>
-          </motion.div>
+          <ServiceCard key={i} s={s} i={i} onOpenOrder={onOpenOrder} />
         ))}
       </div>
     </section>
