@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
-const heroImageMobile = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/845675ce00bd3d4fc0ec773ff6b8da23/456x342"
-const heroImageDesktop = "https://avatars.mds.yandex.net/get-autoru-vos/5484094/845675ce00bd3d4fc0ec773ff6b8da23/1200x900"
+const heroImageMobile = "/hero-mobile.webp"
+const heroImageDesktop = "/hero-desktop.webp"
 
 const advantages = [
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
