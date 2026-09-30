@@ -7,14 +7,16 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const accepted = localStorage.getItem("cookie_accepted")
-    if (!accepted) {
-      setVisible(true)
-      const timer = setTimeout(() => {
-        localStorage.setItem("cookie_accepted", "1")
-        setVisible(false)
-      }, 5000)
-      return () => clearTimeout(timer)
+    if (accepted) return
+
+    const handleScroll = () => {
+      const scrolledToBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10
+      if (scrolledToBottom) {
+        setVisible(true)
+      }
     }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const accept = () => {
