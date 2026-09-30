@@ -75,16 +75,18 @@ function ServiceCard({ s, i, onOpenOrder }: ServiceCardProps) {
 
 export function ServicesSection({ onOpenOrder }: ServicesSectionProps) {
   return (
-    <section id="uslugi" className="pt-6 pb-14 px-6 max-w-6xl mx-auto scroll-mt-16">
-      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-        <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
-        <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
-      </motion.div>
+    <section id="uslugi" className="py-14 px-6 bg-gray-900/50 scroll-mt-16">
+      <div className="max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+          <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">услуги</span></h2>
+          <p className="text-gray-400">Всё что нужно для переезда и доставки — в одном месте</p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((s, i) => (
-          <ServiceCard key={i} s={s} i={i} onOpenOrder={onOpenOrder} />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s, i) => (
+            <ServiceCard key={i} s={s} i={i} onOpenOrder={onOpenOrder} />
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -141,7 +143,7 @@ export function GuaranteesSection() {
   }, [])
 
   return (
-    <section id="cennost" className="pt-14 pb-6 px-6 bg-gray-900/50 scroll-mt-16">
+    <section id="cennost" className="py-14 px-6 bg-black/40 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
           <h2 className="text-4xl font-bold mb-3">Почему с нами <span className="text-orange-500">работают</span></h2>
@@ -149,8 +151,8 @@ export function GuaranteesSection() {
         </motion.div>
       </div>
       <div className="relative max-w-6xl mx-auto">
-        <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-[#0a101d] to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-[#0a101d] to-transparent" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-r from-gray-950 to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-10 md:w-24 z-10 bg-gradient-to-l from-gray-950 to-transparent" />
         <div ref={trackRef} onMouseEnter={() => { isHovered.current = true }} onMouseLeave={() => { isHovered.current = false }}
           onTouchStart={() => { isHovered.current = true }} onTouchEnd={() => { isHovered.current = false }}
           className="no-scrollbar flex gap-6 overflow-x-auto px-6 pb-4 touch-pan-x overscroll-x-contain">
