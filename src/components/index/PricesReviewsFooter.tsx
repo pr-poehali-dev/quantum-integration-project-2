@@ -63,7 +63,7 @@ export default function PricesReviewsFooter({ reviewsRef, onReviewsMouseEnter, o
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
             <h2 className="text-4xl font-bold mb-3">Наши <span className="text-orange-500">цены</span></h2>
-            <p className="text-gray-400">Прозрачный прайс без скрытых доплат</p>
+            <p className="text-gray-400">Прозрачный прайс — цены указаны с учётом всех акций и промокодов</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {prices.map((p, i) => (
