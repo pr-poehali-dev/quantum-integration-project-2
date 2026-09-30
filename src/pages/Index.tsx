@@ -32,7 +32,7 @@ export default function Index() {
   const exitPopupShown = useRef(false)
 
   // Калькулятор
-  const [carType, setCarType] = useState("Газель (до 1,5 т)")
+  const [carType, setCarType] = useState("Газель 1,5 т, тент 3 м")
   const [hours, setHours] = useState(2)
   const [movers, setMovers] = useState(0)
   const moverRate = 600
