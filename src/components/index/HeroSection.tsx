@@ -7,7 +7,7 @@ const heroImageDesktop = "/hero-desktop.webp"
 const advantages = [
   { icon: "Shield", value: "100%", label: "Сохранность груза" },
   { icon: "ThumbsUp", value: "12 лет", label: "На рынке" },
-  { icon: "Star", value: "6136", label: "Выполненных заказов" },
+  { icon: "Star", value: "7071", label: "Выполненных заказов" },
   { icon: "Handshake", value: "Без", label: "Посредников" },
 ]
 
@@ -97,7 +97,7 @@ export default function HeroSection({ onOpenCalculator }: HeroSectionProps) {
             transition={{ duration: 0.7, delay: 0.45 }}
             className="text-gray-400 mb-10 max-w-xl mx-auto"
           >
-            Газель · Грузчики · Переезды · Доставка · Вывоз мусора<br />По Уфе и Башкортостану
+            Перевозки на газели · Грузчики · Переезды · Доставка · Вывоз мусора<br />По Уфе и Башкортостану
           </motion.p>
 
           <motion.div
