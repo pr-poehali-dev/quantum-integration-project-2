@@ -3,9 +3,9 @@ import { AnimatePresence, motion } from "framer-motion"
 import Icon from "@/components/ui/icon"
 
 export const TARIFFS: Record<string, number> = {
-  "Газель 1,5 т, тент 3 м": 1400,
-  "Газель 1,5 т, тент 4 м": 1500,
-  "Газель усиленная 2,5 т, тент 3 м": 1800,
+  "Газель 1,5 т, тент 3 м": 1000,
+  "Газель 1,5 т, тент 4 м": 1000,
+  "Газель усиленная 2,5 т, тент 3 м": 1300,
 }
 
 interface CalculatorPopupProps {

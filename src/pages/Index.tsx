@@ -35,7 +35,7 @@ export default function Index() {
   const [carType, setCarType] = useState("Газель 1,5 т, тент 3 м")
   const [hours, setHours] = useState(2)
   const [movers, setMovers] = useState(0)
-  const moverRate = 600
+  const moverRate = 500
   const estimated = TARIFFS[carType] * hours + movers * moverRate * hours
 
   const reviewsRef = useRef<HTMLDivElement>(null)
