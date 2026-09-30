@@ -173,9 +173,9 @@ export default function Index() {
     <div className="min-h-screen bg-gray-950 text-white font-sans">
       <HeroSection onOpenCalculator={() => setCalculatorPopupVisible(true)} />
 
-      <ServicesSection onOpenOrder={() => setOrderPopupVisible(true)} />
-
       <HowWeWorkSection />
+
+      <ServicesSection onOpenOrder={() => setOrderPopupVisible(true)} />
 
       <GuaranteesSection />
 
